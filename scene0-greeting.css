@@ -1,0 +1,44 @@
+/* SCENE 0 / Chapter I: the greeting (golden hour, speech bubble) */
+  /* ---------- Scene 0: the greeting (golden hour) ---------- */
+  .dusk-sky {
+    background:
+      radial-gradient(70% 45% at 50% 90%, rgba(255,214,170,.65) 0%, rgba(255,214,170,0) 70%),
+      linear-gradient(180deg, #CFC3E6 0%, #E7CCE0 38%, #F6D7D6 68%, #FBE5D3 100%);
+  }
+  .sun-glow {
+    position: absolute; left: 50%; bottom: 8%; width: 90vmin; height: 90vmin; transform: translateX(-50%);
+    border-radius: 50%; pointer-events: none;
+    background: radial-gradient(closest-side, rgba(255,238,205,.8), rgba(255,238,205,0));
+  }
+  .cloud-w { position: absolute; left: -50%; border-radius: 50%; background: rgba(255,255,255,.38);
+             filter: blur(14px); pointer-events: none; animation: cloudDrift linear infinite; }
+
+  .speech {
+    position: relative; width: min(92vw, 30rem); margin: 0 auto 22px;
+    padding: 1.4rem 1.6rem 1.1rem;
+    background: #FFFDF9; color: #4A2F3A;
+    border: 1px solid rgba(138,75,88,.18); border-radius: 26px;
+    box-shadow: 0 22px 50px -24px rgba(74,47,58,.45);
+  }
+  .speech::after {
+    content: ""; position: absolute; left: 50%; bottom: -11px; width: 22px; height: 22px;
+    background: #FFFDF9; border-right: 1px solid rgba(138,75,88,.18); border-bottom: 1px solid rgba(138,75,88,.18);
+    border-radius: 0 0 6px 0; transform: translateX(-50%) rotate(45deg);
+  }
+  .speech-stack { display: grid; }               /* every line shares one cell, so the bubble never changes size */
+  .speech-line {
+    grid-area: 1 / 1; visibility: hidden; text-align: center;
+    font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500;
+    font-size: clamp(1.4rem, 4.6vw, 1.8rem); line-height: 1.35;
+  }
+  .speech-line.on { visibility: visible; }
+  .speech-line .rest { opacity: 0; }
+  .speech-foot { display: flex; justify-content: center; margin-top: .9rem; }
+  .speech-btn {
+    font-family: 'Jost', sans-serif; font-size: .9rem; letter-spacing: .08em;
+    color: #8A4B58; border: 1px solid rgba(138,75,88,.35); border-radius: 999px;
+    padding: .5rem 1.5rem; cursor: pointer;
+    transition: background-color .35s ease, border-color .35s ease;
+  }
+  .speech-btn:hover { background: rgba(138,75,88,.07); border-color: rgba(138,75,88,.65); }
+  .speech-btn:focus-visible { outline: 2px solid #8A4B58; outline-offset: 4px; }
