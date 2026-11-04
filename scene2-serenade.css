@@ -1,0 +1,22 @@
+/* SCENE 2 / Chapter III: night sky, balcony serenade, synced lyrics */
+  /* ---------- Part 2: night ---------- */
+  .night-sky {
+    background:
+      radial-gradient(70% 40% at 50% 100%, rgba(120,80,160,.35) 0%, rgba(120,80,160,0) 70%),
+      linear-gradient(180deg, #060924 0%, #101444 35%, #231B5E 68%, #3B2A6E 90%, #0C0E2B 100%);
+  }
+
+  .cloud { position: absolute; left: -50%; border-radius: 50%; background: rgba(150,150,225,.13);
+           filter: blur(16px); pointer-events: none; animation: cloudDrift linear infinite; }
+
+  .milkyway { position: absolute; left: -20%; top: 24%; width: 140%; height: 110px; transform: rotate(-24deg);
+    background: linear-gradient(90deg, transparent, rgba(190,170,255,.10) 30%, rgba(255,200,230,.09) 60%, transparent);
+    filter: blur(26px); pointer-events: none; }
+  .shoot { position: absolute; width: 90px; height: 1.5px; pointer-events: none;
+           background: linear-gradient(90deg, #fff, rgba(255,255,255,0)); }
+  .lyric {
+    font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500;
+    font-size: clamp(1.35rem, 3.6vw, 2.1rem); line-height: 1.35;
+    max-width: 34ch; margin-inline: auto; opacity: 0; color: #FFF4DA;
+    text-shadow: 0 0 18px rgba(246,225,182,.45), 0 2px 12px rgba(0,0,0,.55);
+  }
