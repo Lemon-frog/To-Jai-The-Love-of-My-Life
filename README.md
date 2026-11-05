@@ -1,5 +1,3 @@
-To Jai, The Love of My Life
-
 ## About
 
 This project is a personalized browser experience for Jai. It guides the visitor through a short story: a greeting, a courtship question, a moonlit scene, three illustrated promises, and an invitation to dance. The interface combines English poetry with Filipino dialogue and hand-drawn SVG scenes.
