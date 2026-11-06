@@ -17,4 +17,4 @@
   .fin-btns .btn-no { color: #F6E1B6; border-color: rgba(246,225,182,.4); }
   .fin-btns .btn-no:hover { background: rgba(246,225,182,.08); border-color: rgba(246,225,182,.75); }
 
-#finaleScene { pointer-events: none; }
+#finaleScene { pointer-events: none; filter: drop-shadow(0 18px 24px rgba(8,6,28,.2)); }
