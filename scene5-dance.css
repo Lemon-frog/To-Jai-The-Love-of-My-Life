@@ -2,13 +2,19 @@
   .dance-sky { background: radial-gradient(60% 40% at 50% 26%, rgba(255,236,190,.22), rgba(255,236,190,0) 70%),
     linear-gradient(180deg, #070A2A 0%, #141650 45%, #2B1F66 80%, #3D2A70 100%); }
 
-#danceScene { pointer-events: none; }
+#danceScene { pointer-events: none; filter: drop-shadow(0 16px 22px rgba(7,8,35,.28)); }
 
 .epilogue-sky {
   isolation: isolate;
   background:
     radial-gradient(ellipse at 50% 45%, rgba(255,218,170,.2), transparent 56%),
     linear-gradient(180deg, #0C0E2B 0%, #21194F 58%, #49305F 100%);
+}
+#part6 {
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0;
+  padding-bottom: clamp(3rem, 10vh, 5rem);
 }
 .epilogue-stars {
   position: absolute;
@@ -21,9 +27,281 @@
     radial-gradient(1.5px 1.5px at 73% 76%, rgba(255,233,196,.75) 50%, transparent 100%),
     radial-gradient(1px 1px at 60% 16%, rgba(255,246,220,.7) 50%, transparent 100%);
 }
+.epilogue-window {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 #epilogueMessage {
-  color: #FFE9C4;
-  font-size: clamp(2rem, 5vw, 3.75rem);
-  line-height: 1.3;
-  text-shadow: 0 0 28px rgba(255,214,160,.35);
+  position: relative;
+  width: min(100%, 50rem);
+  flex: 0 1 auto;
+  min-height: 25rem;
+  padding: clamp(1.5rem, 5vw, 3.25rem) clamp(1.4rem, 6vw, 4rem);
+  overflow: hidden;
+  color: #493747;
+  text-align: left;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: normal;
+  line-height: 1.5;
+  text-shadow: none;
+  border: 1px solid rgba(112, 78, 71, .35);
+  border-radius: 4px;
+  background:
+    radial-gradient(ellipse at 12% 90%, rgba(196, 159, 139, .14), transparent 34%),
+    linear-gradient(135deg, #FBF1DF, #F2E2C9);
+  box-shadow: 0 18px 36px rgba(5,7,30,.35), 0 5px 0 rgba(112,78,71,.3), inset 0 0 0 8px rgba(255,255,255,.25), inset 0 0 0 9px rgba(112,78,71,.16);
+  transform: perspective(1400px) rotateX(.6deg);
+  transform-origin: bottom center;
+  backdrop-filter: none;
+}
+#epilogueMessage::before,
+#epilogueMessage::after { content: none; }
+.postcard-top {
+  position: relative;
+  display: flex;
+  min-height: 8.5rem;
+  align-items: flex-start;
+  flex-direction: column;
+  border-bottom: 1px solid rgba(112,78,71,.22);
+}
+.postcard-kicker {
+  margin: .25rem 0 0;
+  color: #866968;
+  font-family: 'Jost', sans-serif;
+  font-size: .75rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+}
+.postcard-recipient {
+  margin: -.25rem 0 0;
+  color: #694756;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.postcard-stamp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  width: 5.2rem;
+  justify-items: center;
+  padding: .25rem;
+  border: 1px dashed rgba(105,71,86,.48);
+  color: #694756;
+  font-family: 'Jost', sans-serif;
+  font-size: .42rem;
+  line-height: 1.2;
+  letter-spacing: .06em;
+  text-align: center;
+}
+.postcard-stamp svg { display: block; width: 3.25rem; height: 3.9rem; }
+.postcard-stamp {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255,255,255,.55), transparent 68%),
+    #F4E4CC;
+  box-shadow: 0 1px 3px rgba(73,55,71,.12), inset 0 0 0 2px rgba(255,255,255,.34);
+}
+.postcard-stamp::after {
+  width: 2.2rem;
+  height: 1px;
+  margin-top: .12rem;
+  background: linear-gradient(90deg, transparent, rgba(105,71,86,.5), transparent);
+  content: "";
+}
+.postcard-postmark {
+  position: absolute;
+  top: 4.25rem;
+  right: 4.1rem;
+  display: flex;
+  gap: .22rem;
+  transform: rotate(-18deg);
+  opacity: .48;
+}
+.postcard-postmark span {
+  width: 1.3rem;
+  height: .6rem;
+  border: 1px solid #9B6971;
+  border-radius: 50%;
+}
+.postcard-divider {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  margin: 1.15rem 0 .65rem;
+  color: #A77D64;
+}
+.postcard-divider::before,
+.postcard-divider::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, transparent, rgba(150,106,94,.42));
+}
+.postcard-divider::after { transform: scaleX(-1); }
+.postcard-keepsakes {
+  position: relative;
+  display: grid;
+  width: min(100%, 39rem);
+  min-height: 7.4rem;
+  align-items: center;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(5.5rem, 1.7fr);
+  gap: clamp(.35rem, 1.5vw, .8rem);
+  margin: .2rem auto .5rem;
+}
+.postcard-keepsakes::before {
+  content: "";
+  position: absolute;
+  top: 2.45rem;
+  right: 2rem;
+  left: 2rem;
+  border-top: 1px dashed rgba(150,106,94,.42);
+}
+.postcard-moment {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  min-width: 0;
+  height: 5.2rem;
+  justify-items: center;
+  align-content: center;
+  padding: .3rem;
+  border: 1px dotted rgba(126,91,91,.7);
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(255,255,255,.72), transparent 72%),
+    linear-gradient(145deg, #FBF3E4, #F2E5D1);
+  box-shadow: inset 0 0 0 2px rgba(255,255,255,.55), inset 0 0 0 3px rgba(126,91,91,.16), 0 2px 4px rgba(73,55,71,.08);
+}
+.postcard-moment::before {
+  position: absolute;
+  z-index: 2;
+  inset: .22rem;
+  border: 1px solid rgba(126,91,91,.16);
+  content: "";
+  pointer-events: none;
+}
+.postcard-moment::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background:
+    radial-gradient(circle, #B89278 0 1px, transparent 1.4px) 4px 4px / 8px 8px no-repeat,
+    radial-gradient(circle, #B89278 0 1px, transparent 1.4px) calc(100% - 12px) 4px / 8px 8px no-repeat,
+    radial-gradient(circle, #B89278 0 1px, transparent 1.4px) 4px calc(100% - 12px) / 8px 8px no-repeat,
+    radial-gradient(circle, #B89278 0 1px, transparent 1.4px) calc(100% - 12px) calc(100% - 12px) / 8px 8px no-repeat;
+  content: "";
+  pointer-events: none;
+}
+.postcard-moment > svg { position: relative; z-index: 1; }
+.postcard-motif {
+  display: block;
+  width: 2.6rem;
+  height: 3.8rem;
+  padding: .1rem;
+}
+.postcard-motif-butterfly { width: 2.65rem; }
+.postcard-motif-petals { width: 2.3rem; }
+.postcard-motif-guitar { width: 2.5rem; }
+.postcard-motif-paper { width: 2.35rem; }
+.postcard-moment-finale {
+  height: 5.2rem;
+  padding: .28rem;
+}
+.postcard-dance-illustration {
+  display: block;
+  width: 100%;
+  height: 3.8rem;
+  border: 1px solid rgba(112,78,71,.28);
+  box-shadow: 0 2px 6px rgba(73,55,71,.12);
+}
+.postcard-pressed-sampaguita {
+  width: 2.5rem;
+  height: 3.8rem;
+}
+.postcard-message {
+  max-width: 39rem;
+  margin: 0 auto;
+  color: #4F3A48;
+  font-size: clamp(1.35rem, 3.2vw, 2rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+.epilogue-table {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: clamp(12rem, 26vh, 16rem);
+  background:
+    repeating-linear-gradient(3deg, transparent 0 23px, rgba(255,218,170,.045) 24px, transparent 26px 49px),
+    linear-gradient(180deg, #705364 0%, #60465A 44%, #483349 100%);
+  box-shadow: 0 -12px 30px rgba(8,7,30,.16);
+  pointer-events: none;
+}
+.epilogue-table::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-top: 2px solid rgba(245,214,177,.48);
+  box-shadow: 0 -2px 8px rgba(245,214,177,.12);
+  content: "";
+}
+.epilogue-table::after {
+  position: absolute;
+  top: 65%;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: rgba(31,22,44,.3);
+  box-shadow: 0 1px 0 rgba(245,214,177,.12);
+  content: "";
+}
+.postcard-signoff {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  margin: 1rem .5rem 0 0;
+  color: #79565D;
+  font-size: 1.15rem;
+  font-style: italic;
+}
+.postcard-signoff strong {
+  color: #694756;
+  font-size: clamp(2rem, 4.5vw, 2.8rem);
+  font-weight: 600;
+  line-height: 1.05;
+}
+.postcard-corner {
+  position: absolute;
+  bottom: .7rem;
+  color: rgba(113,137,109,.72);
+  font-size: 2.25rem;
+  line-height: 1;
+}
+.postcard-corner-left { left: 1rem; transform: rotate(-38deg); }
+.postcard-corner-right { right: 1rem; transform: scaleX(-1) rotate(-38deg); }
+@media (max-width: 480px) {
+  #part6 { padding-bottom: clamp(5rem, 15vh, 7rem); }
+  #epilogueMessage.postcard { min-height: 22rem; }
+  .postcard-top { min-height: 7.5rem; }
+  .postcard-postmark { right: 3.65rem; }
+  .postcard-keepsakes { min-height: 5.9rem; grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(3.7rem, 1.45fr); gap: .12rem; }
+  .postcard-keepsakes::before { top: 2.05rem; right: 1.2rem; left: 1.2rem; }
+  .postcard-moment { height: 4.65rem; padding: .2rem; }
+  .postcard-motif { width: 1.95rem; height: 3.4rem; padding: .08rem; }
+  .postcard-motif-butterfly { width: 2.1rem; }
+  .postcard-motif-petals { width: 1.85rem; }
+  .postcard-motif-guitar { width: 1.9rem; }
+  .postcard-motif-paper { width: 1.8rem; }
+  .postcard-moment-finale { height: 4.65rem; padding: .2rem; }
+  .postcard-dance-illustration { height: 3.4rem; }
+  .postcard-pressed-sampaguita { width: 1.95rem; height: 3.4rem; }
+  .postcard-message { font-size: 1.3rem; }
 }
