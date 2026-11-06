@@ -3,6 +3,12 @@
   gsap.registerPlugin(ScrollToPlugin);
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const veil = document.getElementById('veil');
+  const syncDocumentVisibility = () => {
+    document.documentElement.classList.toggle('document-hidden', document.hidden);
+    gsap.globalTimeline.paused(document.hidden);
+  };
+  document.addEventListener('visibilitychange', syncDocumentVisibility);
+  syncDocumentVisibility();
 
   /* One way to move between scenes: the screen softly dims (warm for day, deep blue for night)
      while the page glides, so every cut feels like a dissolve. */
@@ -21,11 +27,37 @@
     ['part0', 'I',   'A Greeting',            '#8A4B58'],
     ['part1', 'II',  'The Question',  '#8A4B58'],
     ['part2', 'III', 'The Serenade',  '#F6E1B6'],
-    ['part3', 'IV',  'Poetic Vows',  '#F6E1B6'],
+    ['part3', 'IV',  'A Declaration',  '#F6E1B6'],
     ['part4', 'V',   'Thank You',          '#F6E1B6'],
     ['part5', 'VI',  'The Last Dance',     '#F6E1B6'],
     ['part6', 'VII', 'A Final Note',       '#F6E1B6']
   ];
+  const scenePausedAnimations = new WeakSet();
+  const sceneMotion = new IntersectionObserver((entries) => {
+    entries.forEach(({ target, isIntersecting }) => {
+      target.classList.toggle('document-offscreen', !isIntersecting);
+      gsap.globalTimeline.getChildren(false, true, true).forEach((animation) => {
+        const children = typeof animation.targets === 'function'
+          ? [animation]
+          : animation.getChildren(true, true, true);
+        const belongsToScene = children.some((child) =>
+          typeof child.targets === 'function' &&
+          child.targets().some((element) => element instanceof Element && target.contains(element))
+        );
+        if (!belongsToScene) return;
+        if (isIntersecting) {
+          if (scenePausedAnimations.has(animation)) {
+            animation.resume();
+            scenePausedAnimations.delete(animation);
+          }
+        } else if (!animation.paused()) {
+          animation.pause();
+          scenePausedAnimations.add(animation);
+        }
+      });
+    });
+  }, { threshold: 0.01 });
+
   const cap = document.getElementById('chapter');
   const capNum = document.getElementById('chapterNum');
   const capTitle = document.getElementById('chapterTitle');
@@ -33,6 +65,7 @@
 
   CH.forEach(([id, num, title, color]) => {
     const el = document.getElementById(id);
+    sceneMotion.observe(el);
     let shown = false;
     new IntersectionObserver((entries, obs) => {
       if (!entries[0].isIntersecting || shown) return;
