@@ -65,6 +65,25 @@
   <!-- ============ SCENE 0: THE GREETING ============ -->
   <section id="part0" class="dusk-sky relative min-h-screen overflow-hidden flex flex-col items-center">
 
+    <svg class="scene-scenery" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="duskHills" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#A98EAE" stop-opacity=".12"/><stop offset="1" stop-color="#8E789D" stop-opacity=".34"/></linearGradient>
+      </defs>
+      <path d="M0 600 Q180 520 360 594 T720 570 T1080 600 T1440 552 V900 H0Z" fill="url(#duskHills)"/>
+      <path d="M0 694 Q190 620 390 674 T790 648 T1150 684 T1440 636 V900 H0Z" fill="#806D91" opacity=".14"/>
+      <g fill="#725F83" opacity=".18">
+        <circle cx="92" cy="636" r="52"/><circle cx="144" cy="620" r="70"/><circle cx="206" cy="650" r="48"/>
+        <circle cx="1274" cy="644" r="58"/><circle cx="1330" cy="618" r="78"/><circle cx="1400" cy="650" r="52"/>
+      </g>
+      <g fill="none" stroke="#FFF8F0" stroke-width="2" stroke-linecap="round" opacity=".55">
+        <path d="M310 230q16-14 32 0q16-14 32 0"/><path d="M1090 292q13-12 26 0q13-12 26 0"/>
+        <path d="M960 184q9-8 18 0q9-8 18 0"/>
+      </g>
+      <g fill="#F6D7D6" opacity=".55">
+        <circle cx="120" cy="776" r="3"/><circle cx="158" cy="752" r="2.5"/><circle cx="1268" cy="780" r="3"/>
+        <circle cx="1312" cy="754" r="2.5"/><circle cx="1374" cy="786" r="3"/>
+      </g>
+    </svg>
     <div class="sun-glow" aria-hidden="true"></div>
     <div class="cloud-w" style="top:8%;width:42%;height:48px;animation-duration:120s" aria-hidden="true"></div>
     <div class="cloud-w" style="top:21%;width:30%;height:38px;animation-duration:160s;animation-delay:-70s" aria-hidden="true"></div>
@@ -328,6 +347,20 @@
   <!-- ============ PART 1 ============ -->
   <section id="part1" class="part1-bg min-h-screen relative flex flex-col items-center justify-center px-6 py-10 overflow-hidden">
 
+    <svg class="scene-scenery" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="gardenFade" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#A9B79A" stop-opacity="0"/><stop offset="1" stop-color="#A9B79A" stop-opacity=".23"/></linearGradient></defs>
+      <path d="M0 760 Q180 700 360 748 T720 730 T1080 758 T1440 716 V900 H0Z" fill="url(#gardenFade)"/>
+      <g fill="none" stroke="#829477" stroke-width="3" stroke-linecap="round" opacity=".2">
+        <path d="M54 900Q86 820 70 742M70 824Q32 792 25 760M74 846Q112 814 126 774"/>
+        <path d="M1380 900Q1350 826 1372 738M1362 832Q1400 804 1412 770M1360 858Q1320 824 1300 790"/>
+      </g>
+      <g fill="#D99AA8" opacity=".38">
+        <circle cx="26" cy="756" r="5"/><circle cx="126" cy="768" r="4"/><circle cx="1412" cy="768" r="5"/><circle cx="1300" cy="784" r="4"/>
+      </g>
+      <g fill="#F2D9A8" opacity=".48">
+        <circle cx="28" cy="756" r="1.8"/><circle cx="126" cy="768" r="1.5"/><circle cx="1412" cy="768" r="1.8"/><circle cx="1300" cy="784" r="1.5"/>
+      </g>
+    </svg>
     <!-- Soft backdrop: botanical sprigs, bokeh and drifting petals -->
     <svg class="sprig absolute top-0 left-0 w-[40vw] max-w-[280px] opacity-30 pointer-events-none" viewBox="0 0 200 200" aria-hidden="true"></svg>
     <svg class="sprig absolute bottom-0 right-0 w-[40vw] max-w-[280px] opacity-30 pointer-events-none rotate-180" viewBox="0 0 200 200" aria-hidden="true"></svg>
@@ -379,7 +412,7 @@
             <stop offset="0" stop-color="#A9B79A"/>
             <stop offset="1" stop-color="#8C9C7E"/>
           </linearGradient>
-          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+          <radialGradient id="glowFill" cx="50%" cy="50%" r="50%">
             <stop offset="0" stop-color="#FFFFFF" stop-opacity=".95"/>
             <stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
           </radialGradient>
@@ -389,7 +422,7 @@
         </defs>
 
         <!-- glow -->
-        <circle id="glow" cx="200" cy="170" r="150" fill="url(#glow)" opacity="0"/>
+        <circle id="glow" cx="200" cy="170" r="150" fill="url(#glowFill)" opacity="0"/>
 
         <!-- stem + leaves -->
         <g id="stemGroup">
@@ -463,9 +496,11 @@
     <div class="milkyway" aria-hidden="true"></div>
     <div id="stars" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
     <!-- a constellation -->
-    <svg class="absolute pointer-events-none" style="top:2.5%;right:2.5%;width:clamp(80px,9.5vw,128px);opacity:.6" viewBox="0 0 200 150" aria-hidden="true">
-      <path d="M10 112 L46 88 L82 94 L114 62 L152 54 L186 20 M114 62 L120 104 L158 112" fill="none" stroke="#FFF6DC" stroke-opacity=".28" stroke-width="1"/>
-      <g fill="#FFF6DC"><circle class="star" cx="10" cy="112" r="2.4" style="opacity:.9"/><circle class="star" cx="46" cy="88" r="2" style="opacity:.9"/><circle class="star" cx="82" cy="94" r="2.6" style="opacity:.9"/><circle class="star" cx="114" cy="62" r="3" style="opacity:.9"/><circle class="star" cx="152" cy="54" r="2.2" style="opacity:.9"/><circle class="star" cx="186" cy="20" r="2.8" style="opacity:.9"/><circle class="star" cx="120" cy="104" r="2" style="opacity:.9"/><circle class="star" cx="158" cy="112" r="2.4" style="opacity:.9"/></g>
+    <svg class="constellation absolute pointer-events-none" style="top:2.5%;right:2.5%;width:clamp(80px,9.5vw,128px);opacity:.6" viewBox="0 0 200 150" aria-hidden="true">
+      <g class="constellation-art">
+        <path d="M10 112 L46 88 L82 94 L114 62 L152 54 L186 20 M114 62 L120 104 L158 112" fill="none" stroke="#FFF6DC" stroke-opacity=".38" stroke-width="1"/>
+        <g fill="#FFF6DC"><circle cx="10" cy="112" r="2.4"/><circle cx="46" cy="88" r="2"/><circle cx="82" cy="94" r="2.6"/><circle cx="114" cy="62" r="3"/><circle cx="152" cy="54" r="2.2"/><circle cx="186" cy="20" r="2.8"/><circle cx="120" cy="104" r="2"/><circle cx="158" cy="112" r="2.4"/></g>
+      </g>
     </svg>
 
     <!-- Crescent moon -->
@@ -571,6 +606,14 @@
         <circle cx="640" cy="108" r="9" fill="#F6C971" opacity=".85"/><path d="M640 99V117M631 108H649" stroke="#15122F" stroke-width="1.5"/>
         <path d="M590 190h11v56h-11z M629 190h11v56h-11z" fill="#9A5A78" opacity=".55"/>
         <rect x="585" y="246" width="60" height="4" rx="1" fill="#3A3270"/>
+        <g id="parol" aria-hidden="true">
+          <path d="M680 146V155" stroke="#9A7859" stroke-width="1.2"/>
+          <circle cx="680" cy="168" r="22" fill="url(#spill)" opacity=".8"/>
+          <path d="M680 154 L684 163 L694 163 L686 169 L689 179 L680 173 L671 179 L674 169 L666 163 L676 163Z" fill="#C95662" stroke="#F6D98B" stroke-width="1.2" stroke-linejoin="round"/>
+          <path d="M680 158 L682.5 165 L690 165 L684 169.5 L686 176 L680 172 L674 176 L676 169.5 L670 165 L677.5 165Z" fill="#F2C879"/>
+          <circle cx="680" cy="168" r="2.4" fill="#FFF4D1"/>
+          <path d="M671 177L667 183M689 177L693 183" stroke="#F6D98B" stroke-width="1" stroke-linecap="round"/>
+        </g>
         <rect x="585" y="396" width="60" height="9" rx="1.5" fill="#5A3F52"/>
         <g fill="#F4C7D4"><circle cx="594" cy="393" r="3"/><circle cx="615" cy="393" r="3"/><circle cx="636" cy="393" r="3"/></g>
         <g fill="#fff" opacity=".9"><circle cx="604" cy="391" r="3.4"/><circle cx="626" cy="391" r="3.4"/></g>
@@ -579,6 +622,8 @@
 
         <!-- ground -->
         <rect x="0" y="438" width="800" height="62" fill="url(#ground)"/>
+        <path d="M256 500 C290 480 306 462 334 438" fill="none" stroke="#C9C4F2" stroke-opacity=".16" stroke-width="16" stroke-linecap="round" stroke-dasharray="1 19"/>
+        <path d="M256 500 C290 480 306 462 334 438" fill="none" stroke="#FFE3A0" stroke-opacity=".1" stroke-width="1.2" stroke-dasharray="1 19"/>
         <g fill="#232A5C"><ellipse cx="300" cy="458" rx="20" ry="4"/><ellipse cx="352" cy="466" rx="22" ry="4.5"/><ellipse cx="410" cy="458" rx="20" ry="4"/><ellipse cx="462" cy="467" rx="22" ry="4.5"/><ellipse cx="530" cy="460" rx="24" ry="4.5"/></g>
         <g id="fence" fill="#1A2050"></g>
         <g id="grass"></g>
@@ -611,6 +656,19 @@
           <rect x="352" y="270" width="134" height="9" rx="2" fill="#41397A"/>
           <path d="M361 282 C352 300 368 320 358 345 C350 365 364 380 357 400" fill="none" stroke="#4F6B54" stroke-width="2"/>
           <g fill="#5E8063"><ellipse cx="353" cy="300" rx="5" ry="2.6" transform="rotate(-30 353 300)"/><ellipse cx="365" cy="322" rx="5" ry="2.6" transform="rotate(30 365 322)"/><ellipse cx="352" cy="347" rx="5" ry="2.6" transform="rotate(-30 352 347)"/><ellipse cx="362" cy="372" rx="5" ry="2.6" transform="rotate(30 362 372)"/><ellipse cx="356" cy="398" rx="5" ry="2.6" transform="rotate(-30 356 398)"/></g>
+          <g fill="#FFF8EC" stroke="#E8D8C5" stroke-width=".45">
+            <g transform="translate(350 313)"><circle cy="-3" r="2.2"/><circle cx="2.8" cy="-1" r="2.2"/><circle cx="1.8" cy="2.6" r="2.2"/><circle cx="-1.8" cy="2.6" r="2.2"/><circle cx="-2.8" cy="-1" r="2.2"/><circle r="1.1" fill="#F2D9A8" stroke="none"/></g>
+            <g transform="translate(362 357) scale(.8)"><circle cy="-3" r="2.2"/><circle cx="2.8" cy="-1" r="2.2"/><circle cx="1.8" cy="2.6" r="2.2"/><circle cx="-1.8" cy="2.6" r="2.2"/><circle cx="-2.8" cy="-1" r="2.2"/><circle r="1.1" fill="#F2D9A8" stroke="none"/></g>
+            <g transform="translate(353 386) scale(.72)"><circle cy="-3" r="2.2"/><circle cx="2.8" cy="-1" r="2.2"/><circle cx="1.8" cy="2.6" r="2.2"/><circle cx="-1.8" cy="2.6" r="2.2"/><circle cx="-2.8" cy="-1" r="2.2"/><circle r="1.1" fill="#F2D9A8" stroke="none"/></g>
+          </g>
+          <g id="balconySampaguita" aria-hidden="true">
+            <path d="M458 271h20l-3 10h-14z" fill="#9A5A4A"/><path d="M456 270h24l-2 3h-20z" fill="#C98B68"/>
+            <path d="M468 270v-13m0 9q-8-4-10-10m10 7q8-4 10-10m-10 9q-7-1-11-6m11 2q6-1 10-6" fill="none" stroke="#567854" stroke-width="1.4" stroke-linecap="round"/>
+            <g fill="#FFF9ED" stroke="#E8D8C5" stroke-width=".35">
+              <g transform="translate(458 256) scale(.65)"><circle cy="-3" r="2.4"/><circle cx="2.8" cy="-1" r="2.4"/><circle cx="1.8" cy="2.6" r="2.4"/><circle cx="-1.8" cy="2.6" r="2.4"/><circle cx="-2.8" cy="-1" r="2.4"/><circle r="1" fill="#F2D9A8"/></g>
+              <g transform="translate(478 256) scale(.65)"><circle cy="-3" r="2.4"/><circle cx="2.8" cy="-1" r="2.4"/><circle cx="1.8" cy="2.6" r="2.4"/><circle cx="-1.8" cy="2.6" r="2.4"/><circle cx="-2.8" cy="-1" r="2.4"/><circle r="1" fill="#F2D9A8"/></g>
+            </g>
+          </g>
           <path d="M358 283 Q418 306 478 283" fill="none" stroke="#5B5090" stroke-width="1"/>
           <g id="lights"></g>
           <circle id="lanternGlow" cx="371" cy="258" r="26" fill="url(#spill)"/>
@@ -750,6 +808,31 @@
   <!-- ============ PART 3 ============ -->
   <section id="part3" class="mist-sky relative min-h-screen overflow-hidden flex flex-col items-center justify-center px-5 sm:px-8 pt-20 sm:pt-24 pb-16">
 
+    <svg class="scene-scenery" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="mistValley" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#191849" stop-opacity="0"/><stop offset="1" stop-color="#090D2D" stop-opacity=".62"/></linearGradient></defs>
+      <path d="M0 520L130 420 258 505 410 370 570 518 720 405 870 520 1030 390 1190 512 1320 410 1440 490V900H0Z" fill="#11143F" opacity=".2"/>
+      <path d="M0 644Q190 568 380 634T760 616T1140 644T1440 590V900H0Z" fill="url(#mistValley)"/>
+      <g opacity=".42">
+        <g fill="#080D2B">
+          <path d="M100 792C104 758 108 726 108 688C115 722 116 755 116 792Z"/>
+          <circle cx="78" cy="690" r="31"/><circle cx="105" cy="671" r="38"/><circle cx="137" cy="691" r="30"/>
+          <circle cx="82" cy="716" r="25"/><circle cx="112" cy="710" r="34"/><circle cx="140" cy="716" r="23"/>
+          <path d="M218 820C221 794 224 770 224 742C230 769 231 794 231 820Z"/>
+          <circle cx="202" cy="748" r="23"/><circle cx="224" cy="733" r="29"/><circle cx="248" cy="750" r="22"/>
+          <circle cx="210" cy="766" r="20"/><circle cx="233" cy="763" r="24"/>
+          <path d="M1218 808C1222 772 1226 736 1226 696C1233 732 1234 772 1234 808Z"/>
+          <circle cx="1195" cy="704" r="30"/><circle cx="1224" cy="680" r="39"/><circle cx="1258" cy="704" r="31"/>
+          <circle cx="1198" cy="730" r="24"/><circle cx="1231" cy="722" r="34"/><circle cx="1260" cy="730" r="23"/>
+          <path d="M1354 828C1357 802 1360 778 1360 750C1366 777 1367 802 1367 828Z"/>
+          <circle cx="1340" cy="756" r="22"/><circle cx="1361" cy="741" r="29"/><circle cx="1385" cy="758" r="22"/>
+          <circle cx="1347" cy="774" r="19"/><circle cx="1369" cy="772" r="23"/>
+        </g>
+        <g fill="none" stroke="#080D2B" stroke-width="5" stroke-linecap="round">
+          <path d="M108 724l-25-24m26 17 26-28M224 770l-17-15m18 10 18-17M1226 738l-25-25m26 17 26-27M1360 782l-17-15m18 10 18-17"/>
+        </g>
+      </g>
+      <path d="M0 850q160-18 320 0t320 0t320 0t320 0t320 0" fill="none" stroke="#B9AEF0" stroke-opacity=".14" stroke-width="2"/>
+    </svg>
     <!-- a few quiet stars + drifting mist -->
     <div id="stars3" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
     <div class="mist mist-a" aria-hidden="true"></div>
@@ -767,7 +850,7 @@
       <h2 id="p3Title" class="font-serif italic font-normal text-4xl sm:text-5xl text-center mb-12 sm:mb-16 flex items-center justify-center gap-4 sm:gap-6" style="color:#F6E1B6">
         <span aria-hidden="true" class="hidden sm:block h-px w-16" style="background:linear-gradient(90deg,transparent,rgba(246,225,182,.6))"></span>
         <span aria-hidden="true" class="text-xl not-italic" style="color:#F2C879">&#10022;</span>
-        <span>Mga Pangako ko Sayo</span>
+        <span>Poetic Vows</span>
         <span aria-hidden="true" class="text-xl not-italic" style="color:#F2C879">&#10022;</span>
         <span aria-hidden="true" class="hidden sm:block h-px w-16" style="background:linear-gradient(270deg,transparent,rgba(246,225,182,.6))"></span>
       </h2>
@@ -783,14 +866,15 @@
               <h3 class="poem-title">Lantern</h3>
               <span class="poem-rule" aria-hidden="true"></span>
               <p class="poem-text">
-                Before you, night was only dark.<br>
-                Then you came, soft as a lamp let down,<br>
-                and every quiet street I knew<br>
-                learned how to glow.<br>
-                I would walk them all again<br>
-                just to find you at the end.
+                I hope I fill your days with warmth,<br>
+                like the gentle light of the morning sun.<br>
+                I hope I fill your nights with peace,<br>
+                like the soft whisper of a breeze.<br>
+                I hope that life embraces you as gently as I do,<br>
+                because you are the the lantern that brightens my world,<br>
+                and the warmth I hold.
               </p>
-              <p class="poem-sign">— always yours</p>
+              <p class="poem-sign">- always yours</p>
             </div>
             <span class="hand hand-l front" aria-hidden="true"><svg viewBox="0 0 120 220"><use href="#handThumb"/></svg></span>
             <span class="hand hand-r front" aria-hidden="true"><svg viewBox="0 0 120 220"><use href="#handThumb"/></svg></span>
@@ -806,13 +890,16 @@
               <h3 class="poem-title">Serenade</h3>
               <span class="poem-rule" aria-hidden="true"></span>
               <p class="poem-text">
-                If I were a song, I would be slow,<br>
-                a waltz the evening hums to itself.<br>
-                I would climb the air to your window<br>
-                and say what words are too small to say:<br>
-                stay a while, and let the night be long.
+                From the moment I heard you,<br>
+                I knew that you were the only one I would listen to.<br>
+                You were a familiar melody,<br>
+                so vivid, yet so far.<br>
+                A rhythm that stays in one's mind,<br> 
+                long after the music has ended.<br>              
+                A song like you is hard to find,<br>
+                so please, dance with me for a lifetime.
               </p>
-              <p class="poem-sign">— with love</p>
+              <p class="poem-sign">- with love</p>
             </div>
             <span class="hand hand-l front" aria-hidden="true"><svg viewBox="0 0 120 220"><use href="#handThumb"/></svg></span>
             <span class="hand hand-r front" aria-hidden="true"><svg viewBox="0 0 120 220"><use href="#handThumb"/></svg></span>
@@ -828,13 +915,14 @@
               <h3 class="poem-title">Vow</h3>
               <span class="poem-rule" aria-hidden="true"></span>
               <p class="poem-text">
-                I promise you the small things first:<br>
-                warm hands, an open door, the last of the tea.<br>
-                Then the larger ones, one by one,<br>
-                as many as there are stars to share,<br>
-                and every one of them yours.
+                I promise you a love for the ages,<br>
+                so pure and intentional that there is no room for doubt.<br>
+                Come to me sad, angry, happy,<br>
+                or whatever it is you feel in that moment,<br>
+                and I promise to accept every last bit of you.<br>
+                For I have chosen you, and I will choose you, every day for the rest of my life.
               </p>
-              <p class="poem-sign">— forever</p>
+              <p class="poem-sign">- now & forever</p>
             </div>
             <span class="hand hand-l front" aria-hidden="true"><svg viewBox="0 0 120 220"><use href="#handThumb"/></svg></span>
             <span class="hand hand-r front" aria-hidden="true"><svg viewBox="0 0 120 220"><use href="#handThumb"/></svg></span>
@@ -855,6 +943,73 @@
   <!-- ============ SCENE 4: THE FINALE (his point of view) ============ -->
   <section id="part4" class="finale-sky relative min-h-screen overflow-hidden flex flex-col items-center justify-end">
 
+    <svg class="scene-scenery" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="finaleGarden" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#251B51" stop-opacity="0"/><stop offset="1" stop-color="#130F38" stop-opacity=".58"/></linearGradient></defs>
+      <path d="M0 600Q180 530 350 584T720 570T1080 594T1440 546V900H0Z" fill="#171440" opacity=".3"/>
+      <path d="M0 730Q190 662 380 718T760 698T1140 730T1440 674V900H0Z" fill="url(#finaleGarden)"/>
+      <g fill="none" stroke="#493D73" stroke-width="7" stroke-linecap="round" opacity=".38">
+        <path d="M0 0Q82 90 44 206M28 92Q92 82 128 34M50 132Q8 126-8 80"/>
+        <path d="M1440 0Q1350 84 1394 208M1402 100Q1340 82 1304 36M1388 146Q1432 126 1450 86"/>
+      </g>
+      <g fill="#E8B9CF" opacity=".28">
+        <circle cx="112" cy="94" r="5"/><circle cx="128" cy="36" r="4"/><circle cx="8" cy="80" r="5"/>
+        <circle cx="1328" cy="86" r="5"/><circle cx="1304" cy="36" r="4"/><circle cx="1450" cy="86" r="5"/>
+      </g>
+      <g fill="#F2C879" opacity=".35">
+        <circle cx="72" cy="812" r="4"/><circle cx="134" cy="784" r="3"/><circle cx="1370" cy="812" r="4"/><circle cx="1308" cy="784" r="3"/>
+      </g>
+    </svg>
+    <svg id="finaleVines" class="absolute inset-0 z-10 w-full h-full pointer-events-none" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <g id="finaleVineLeaf">
+          <path d="M0 0C8-15 24-19 35-14C30 1 13 8 0 0Z" fill="#829773" stroke="#546B55" stroke-width="1.2" vector-effect="non-scaling-stroke"/>
+          <path d="M2 0Q17-7 32-14" fill="none" stroke="#C1C99E" stroke-width="1.1" stroke-linecap="round" vector-effect="non-scaling-stroke"/>
+        </g>
+        <g id="finaleVineBloom">
+          <g fill="#FFFDF5" stroke="#E5D8C1" stroke-width="1.1">
+            <ellipse cy="-11" rx="6.5" ry="11"/>
+            <ellipse cy="-11" rx="6.5" ry="11" transform="rotate(72)"/>
+            <ellipse cy="-11" rx="6.5" ry="11" transform="rotate(144)"/>
+            <ellipse cy="-11" rx="6.5" ry="11" transform="rotate(216)"/>
+            <ellipse cy="-11" rx="6.5" ry="11" transform="rotate(288)"/>
+          </g>
+          <circle r="4" fill="#EFCF83"/>
+        </g>
+      </defs>
+      <g fill="none" stroke="#71896D" stroke-linecap="round" stroke-linejoin="round" opacity=".8">
+        <path d="M-20 8C76 0 128 76 211 54C270 39 284 5 354 16" stroke-width="4" vector-effect="non-scaling-stroke"/>
+        <path d="M1460 8C1364 0 1312 76 1229 54C1170 39 1156 5 1086 16" stroke-width="4" vector-effect="non-scaling-stroke"/>
+        <path d="M0 5C13 148 38 223 97 289C141 339 162 390 146 463C131 532 178 578 203 648C226 713 204 779 170 914" stroke-width="3.2" vector-effect="non-scaling-stroke"/>
+        <path d="M1440 4C1424 126 1393 203 1342 267C1292 331 1277 394 1294 456C1312 520 1267 590 1245 653C1222 719 1245 793 1278 914" stroke-width="3.2" vector-effect="non-scaling-stroke"/>
+        <path d="M48 174C88 167 111 183 120 213M148 466C106 453 88 469 84 500M196 634C240 628 261 650 259 681M1392 183C1353 173 1331 190 1324 220M1292 459C1336 445 1354 464 1359 493M1250 638C1207 630 1184 650 1186 679" stroke-width="1.8" vector-effect="non-scaling-stroke"/>
+      </g>
+      <g>
+        <use href="#finaleVineLeaf" transform="translate(103 47) rotate(34) scale(.8)"/>
+        <use href="#finaleVineLeaf" transform="translate(187 119) rotate(158) scale(.75)"/>
+        <use href="#finaleVineLeaf" transform="translate(270 140) rotate(16) scale(.9)"/>
+        <use href="#finaleVineLeaf" transform="translate(354 16) rotate(205) scale(.78)"/>
+        <use href="#finaleVineLeaf" transform="translate(1086 16) rotate(22) scale(.78)"/>
+        <use href="#finaleVineLeaf" transform="translate(1170 39) rotate(155) scale(.8)"/>
+        <use href="#finaleVineLeaf" transform="translate(1260 54) rotate(22) scale(.9)"/>
+        <use href="#finaleVineLeaf" transform="translate(1262 145) rotate(196) scale(.84)"/>
+        <use href="#finaleVineLeaf" transform="translate(1374 54) rotate(16) scale(.78)"/>
+        <use href="#finaleVineLeaf" transform="translate(15 125) rotate(192) scale(.7)"/>
+        <use href="#finaleVineLeaf" transform="translate(96 288) rotate(22) scale(.72)"/>
+        <use href="#finaleVineLeaf" transform="translate(148 465) rotate(190) scale(.78)"/>
+        <use href="#finaleVineLeaf" transform="translate(191 633) rotate(26) scale(.8)"/>
+        <use href="#finaleVineLeaf" transform="translate(1422 130) rotate(10) scale(.7)"/>
+        <use href="#finaleVineLeaf" transform="translate(1344 267) rotate(195) scale(.72)"/>
+        <use href="#finaleVineLeaf" transform="translate(1291 457) rotate(15) scale(.78)"/>
+        <use href="#finaleVineLeaf" transform="translate(1249 640) rotate(198) scale(.8)"/>
+        <use href="#finaleVineBloom" transform="translate(30 94) scale(.75)"/>
+        <use href="#finaleVineBloom" transform="translate(307 133) scale(.68)"/>
+        <use href="#finaleVineBloom" transform="translate(1197 164) scale(.76)"/>
+        <use href="#finaleVineBloom" transform="translate(117 344) scale(.65)"/>
+        <use href="#finaleVineBloom" transform="translate(175 582) scale(.72)"/>
+        <use href="#finaleVineBloom" transform="translate(1322 328) scale(.65)"/>
+        <use href="#finaleVineBloom" transform="translate(1272 584) scale(.72)"/>
+      </g>
+    </svg>
     <div id="stars4" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
     <div id="bokeh4" class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"></div>
     <div id="fall4" class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"></div>
@@ -867,9 +1022,11 @@
       <circle cx="52" cy="62" r="34" fill="#FFF1CF" mask="url(#crescentMask4)"/>
       <g mask="url(#crescentMask4)" fill="#E6CF9E" opacity=".65"><circle cx="38" cy="72" r="4"/><circle cx="29" cy="54" r="3"/><circle cx="45" cy="88" r="3.2"/></g>
     </svg>
-    <svg class="absolute pointer-events-none" style="top:7%;left:7%;width:clamp(100px,14vw,180px);opacity:.55" viewBox="0 0 200 130" aria-hidden="true">
-      <path d="M8 96 L44 70 L84 78 L118 44 L160 36 M84 78 L96 112" fill="none" stroke="#FFF6DC" stroke-opacity=".28" stroke-width="1"/>
-      <g fill="#FFF6DC"><circle class="star" cx="8" cy="96" r="2.4" style="opacity:.9"/><circle class="star" cx="44" cy="70" r="2" style="opacity:.9"/><circle class="star" cx="84" cy="78" r="2.8" style="opacity:.9"/><circle class="star" cx="118" cy="44" r="2.4" style="opacity:.9"/><circle class="star" cx="160" cy="36" r="3" style="opacity:.9"/><circle class="star" cx="96" cy="112" r="2" style="opacity:.9"/></g>
+    <svg class="constellation absolute pointer-events-none" style="top:7%;left:7%;width:clamp(100px,14vw,180px);opacity:.55" viewBox="0 0 200 130" aria-hidden="true">
+      <g class="constellation-art">
+        <path d="M8 96 L44 70 L84 78 L118 44 L160 36 M84 78 L96 112" fill="none" stroke="#FFF6DC" stroke-opacity=".38" stroke-width="1"/>
+        <g fill="#FFF6DC"><circle cx="8" cy="96" r="2.4"/><circle cx="44" cy="70" r="2"/><circle cx="84" cy="78" r="2.8"/><circle cx="118" cy="44" r="2.4"/><circle cx="160" cy="36" r="3"/><circle cx="96" cy="112" r="2"/></g>
+      </g>
     </svg>
 
     <div class="relative z-10 grid mb-3 px-6 w-full" style="justify-items:center">
@@ -1088,7 +1245,97 @@
   </section>
 
   <!-- ============ SCENE 6: THE LAST DANCE ============ -->
-  <section id="part5" class="dance-sky relative min-h-screen overflow-hidden flex flex-col items-center justify-end">
+  <section id="part5" class="dance-sky relative min-h-screen overflow-hidden flex flex-col">
+    <svg class="scene-scenery" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="danceGrove" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#0B1038" stop-opacity="0"/><stop offset="1" stop-color="#090D2D" stop-opacity=".65"/></linearGradient></defs>
+      <path d="M0 620Q180 540 360 606T720 582T1080 608T1440 550V900H0Z" fill="#111442" opacity=".28"/>
+      <path d="M0 754Q220 686 430 744T850 724T1220 750T1440 710V900H0Z" fill="url(#danceGrove)"/>
+      <g fill="#080D2B" opacity=".7">
+        <path d="M-32 900C-18 770-3 642 27 522C55 411 80 345 112 287C111 362 99 431 83 508C66 593 50 710 43 900Z"/>
+        <path d="M10 414C76 378 114 333 147 264C130 344 102 405 35 460M26 508C93 486 135 450 177 394C151 466 104 519 48 552" fill="none" stroke="#080D2B" stroke-width="26" stroke-linecap="round"/>
+        <path d="M-30 327C-17 280 15 245 59 237C86 197 141 193 171 224C222 208 270 239 274 283C311 308 304 355 281 380C271 422 221 441 180 420C143 449 89 433 75 400C27 410-14 379-30 327Z"/>
+        <path d="M-25 210C2 171 38 155 79 164C104 126 153 126 183 153C225 140 265 165 274 199C309 213 321 248 304 277C276 300 245 291 220 278C194 311 148 316 115 292C79 316 31 297 22 266C-9 260-28 239-25 210Z" opacity=".84"/>
+        <path d="M1472 900C1458 770 1443 642 1413 522C1385 411 1360 345 1328 287C1329 362 1341 431 1357 508C1374 593 1390 710 1397 900Z"/>
+        <path d="M1430 414C1364 378 1326 333 1293 264C1310 344 1338 405 1405 460M1414 508C1347 486 1305 450 1263 394C1289 466 1336 519 1392 552" fill="none" stroke="#080D2B" stroke-width="26" stroke-linecap="round"/>
+        <path d="M1470 327C1457 280 1425 245 1381 237C1354 197 1299 193 1269 224C1218 208 1170 239 1166 283C1129 308 1136 355 1159 380C1169 422 1219 441 1260 420C1297 449 1351 433 1365 400C1413 410 1454 379 1470 327Z"/>
+        <path d="M1465 210C1438 171 1402 155 1361 164C1336 126 1287 126 1257 153C1215 140 1175 165 1166 199C1131 213 1119 248 1136 277C1164 300 1195 291 1220 278C1246 311 1292 316 1325 292C1361 316 1409 297 1418 266C1449 260 1468 239 1465 210Z" opacity=".84"/>
+        <path d="M187 278C283 237 302 149 393 142C439 138 472 168 505 194M1253 278C1157 237 1138 149 1047 142C1001 138 968 168 935 194" fill="none" stroke="#080D2B" stroke-width="18" stroke-linecap="round"/>
+        <path d="M312 205C334 192 345 178 350 158M390 143C408 125 423 106 427 83M1130 205C1108 192 1097 178 1092 158M1052 143C1034 125 1019 106 1015 83" fill="none" stroke="#080D2B" stroke-width="8" stroke-linecap="round"/>
+      </g>
+      <g fill="#20244D" opacity=".56">
+        <path d="M5 281C36 258 66 263 87 287C112 249 162 253 181 284C219 258 258 276 266 309C249 337 212 345 185 329C160 361 111 359 93 333C56 352 15 332 5 281Z"/>
+        <path d="M1435 281C1404 258 1374 263 1353 287C1328 249 1278 253 1259 284C1221 258 1182 276 1174 309C1191 337 1228 345 1255 329C1280 361 1329 359 1347 333C1384 352 1425 332 1435 281Z"/>
+      </g>
+      <g fill="#293257" opacity=".64">
+        <path d="M256 215C265 186 291 174 314 184C333 162 364 167 376 189C399 179 421 193 424 215C407 232 388 230 373 219C355 240 328 238 316 219C294 231 270 229 256 215Z"/>
+        <path d="M1184 215C1175 186 1149 174 1126 184C1107 162 1076 167 1064 189C1041 179 1019 193 1016 215C1033 232 1052 230 1067 219C1085 240 1112 238 1124 219C1146 231 1170 229 1184 215Z"/>
+      </g>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <g stroke="#71896D" opacity=".82">
+          <path d="M94 381C106 353 112 326 116 296M118 334C99 318 84 299 78 278M109 311C129 300 145 280 153 261M1346 381C1334 353 1328 326 1324 296M1322 334C1341 318 1356 299 1362 278M1331 311C1311 300 1295 280 1287 261" stroke-width="3"/>
+          <path d="M102 354C83 346 69 331 65 315M113 325C130 318 143 304 147 290M1338 354C1357 346 1371 331 1375 315M1327 325C1310 318 1297 304 1293 290" stroke-width="1.7"/>
+        </g>
+        <g stroke="#45466B" stroke-width="5" opacity=".88">
+          <path d="M25 817C34 715 45 634 59 559C72 488 89 425 105 373"/>
+          <path d="M1414 817C1405 715 1394 634 1380 559C1367 488 1350 425 1334 373"/>
+          <path d="M25 817Q51 801 71 807M1414 817Q1388 801 1368 807M51 623C83 595 101 565 112 530M65 552C37 528 24 500 21 470M1388 623C1356 595 1338 565 1327 530M1374 552C1402 528 1415 500 1418 470"/>
+        </g>
+        <g stroke="#A3A0B4" stroke-width="2.2" opacity=".62">
+          <path d="M25 817C34 715 45 634 59 559C72 488 89 425 105 373"/>
+          <path d="M1414 817C1405 715 1394 634 1380 559C1367 488 1350 425 1334 373"/>
+          <path d="M32 759Q40 693 48 648M47 628Q57 570 71 520M74 490Q87 437 98 403M1407 759Q1399 693 1391 648M1392 628Q1382 570 1368 520M1365 490Q1352 437 1341 403"/>
+        </g>
+        <g stroke="#69704F" stroke-width="2" opacity=".78">
+          <path d="M18 742Q38 731 52 735M57 603Q72 591 84 594M80 492Q94 479 105 481M1421 742Q1401 731 1387 735M1382 603Q1367 591 1355 594M1359 492Q1345 479 1334 481"/>
+        </g>
+        <g stroke="#66704F" stroke-width="3" opacity=".78">
+          <path d="M92 302C102 268 116 245 140 226M129 300C146 270 164 249 190 239M1350 302C1340 268 1326 245 1302 226M1313 300C1296 270 1278 249 1252 239"/>
+        </g>
+      </g>
+      <g fill="none" stroke="#A3A0B4" stroke-linecap="round" opacity=".42">
+        <path d="M26 798C34 715 45 634 59 559C72 488 89 425 105 373" stroke-width="1.6"/>
+        <path d="M1413 798C1405 715 1394 634 1380 559C1367 488 1350 425 1334 373" stroke-width="1.6"/>
+        <path d="M40 748Q53 737 64 739M46 698Q59 686 69 688M58 638Q73 625 85 627M72 578Q87 567 97 569M1386 748Q1373 737 1362 739M1380 698Q1367 686 1357 688M1368 638Q1353 625 1341 627M1354 578Q1339 567 1329 569" stroke-width="1.2"/>
+      </g>
+      <g fill="#A2A47A" opacity=".78">
+        <ellipse cx="70" cy="374" rx="8" ry="3" transform="rotate(-35 70 374)"/>
+        <ellipse cx="84" cy="342" rx="7" ry="2.8" transform="rotate(-28 84 342)"/>
+        <ellipse cx="1370" cy="374" rx="8" ry="3" transform="rotate(35 1370 374)"/>
+        <ellipse cx="1356" cy="342" rx="7" ry="2.8" transform="rotate(28 1356 342)"/>
+      </g>
+      <g fill="#A2A47A" opacity=".7">
+        <ellipse cx="124" cy="248" rx="17" ry="6" transform="rotate(-32 124 248)"/>
+        <ellipse cx="169" cy="262" rx="18" ry="6" transform="rotate(-20 169 262)"/>
+        <ellipse cx="1315" cy="248" rx="17" ry="6" transform="rotate(32 1315 248)"/>
+        <ellipse cx="1270" cy="262" rx="18" ry="6" transform="rotate(20 1270 262)"/>
+      </g>
+      <defs>
+        <g id="danceCanopyLeaves" fill="#8C966D" stroke="#525D4A" stroke-width="1" opacity=".9">
+          <path d="M25 276Q44 257 64 264Q54 284 31 288Z"/><path d="M72 253Q87 231 109 236Q99 260 78 265Z"/>
+          <path d="M119 221Q136 201 156 207Q147 229 126 235Z"/><path d="M184 245Q204 225 224 232Q215 253 193 259Z"/>
+          <path d="M13 322Q34 308 51 318Q38 336 17 337Z"/><path d="M74 342Q94 326 113 335Q100 353 80 357Z"/>
+          <path d="M28 277Q43 271 58 266M76 254Q92 248 105 239M123 222Q139 217 152 210M188 247Q202 240 220 234M17 323Q31 321 47 319M79 343Q94 341 109 337" fill="none" stroke="#C1C99E" stroke-width="1" stroke-linecap="round"/>
+        </g>
+      </defs>
+      <use href="#danceCanopyLeaves"/>
+      <use href="#danceCanopyLeaves" transform="translate(1440 0) scale(-1 1)"/>
+      <g fill="#F8EBD7" stroke="#D8C8B2" stroke-width="1" opacity=".88">
+        <g transform="translate(96 300)"><circle cy="-4" r="3.5"/><circle cx="3.8" cy="-1" r="3.5"/><circle cx="2.4" cy="3" r="3.5"/><circle cx="-2.4" cy="3" r="3.5"/><circle cx="-3.8" cy="-1" r="3.5"/><circle r="1.3" fill="#EFCF83" stroke="none"/></g>
+        <g transform="translate(74 457) scale(.8)"><circle cy="-4" r="3.5"/><circle cx="3.8" cy="-1" r="3.5"/><circle cx="2.4" cy="3" r="3.5"/><circle cx="-2.4" cy="3" r="3.5"/><circle cx="-3.8" cy="-1" r="3.5"/><circle r="1.3" fill="#EFCF83" stroke="none"/></g>
+        <g transform="translate(1344 300)"><circle cy="-4" r="3.5"/><circle cx="3.8" cy="-1" r="3.5"/><circle cx="2.4" cy="3" r="3.5"/><circle cx="-2.4" cy="3" r="3.5"/><circle cx="-3.8" cy="-1" r="3.5"/><circle r="1.3" fill="#EFCF83" stroke="none"/></g>
+        <g transform="translate(1366 457) scale(.8)"><circle cy="-4" r="3.5"/><circle cx="3.8" cy="-1" r="3.5"/><circle cx="2.4" cy="3" r="3.5"/><circle cx="-2.4" cy="3" r="3.5"/><circle cx="-3.8" cy="-1" r="3.5"/><circle r="1.3" fill="#EFCF83" stroke="none"/></g>
+      </g>
+      <g fill="#EBC3CF" opacity=".5">
+        <circle cx="160" cy="336" r="3"/><circle cx="117" cy="384" r="2"/><circle cx="135" cy="407" r="2.4"/>
+        <circle cx="1280" cy="336" r="3"/><circle cx="1323" cy="384" r="2"/><circle cx="1305" cy="407" r="2.4"/>
+      </g>
+      <g fill="#F6D98B" opacity=".36">
+        <circle cx="260" cy="790" r="3"/><circle cx="306" cy="776" r="2"/><circle cx="1120" cy="798" r="3"/><circle cx="1160" cy="778" r="2"/>
+      </g>
+      <g fill="#EBC3CF" opacity=".3">
+        <circle cx="260" cy="787" r="1.2"/><circle cx="306" cy="774" r="1"/><circle cx="1120" cy="795" r="1.2"/><circle cx="1160" cy="776" r="1"/>
+      </g>
+    </svg>
     <div id="stars5" class="absolute inset-0 pointer-events-none" aria-hidden="true"></div>
     <div id="lant5" class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"></div>
     <div id="fall5" class="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true"></div>
@@ -1099,17 +1346,29 @@
       <circle cx="120" cy="120" r="118" fill="url(#mg5)"/><circle cx="120" cy="120" r="64" fill="#FFF3D6"/>
       <g fill="#E9D5A6" opacity=".6"><circle cx="100" cy="104" r="9"/><circle cx="138" cy="140" r="12"/><circle cx="116" cy="148" r="5"/><circle cx="144" cy="100" r="6"/></g>
     </svg>
-    <p id="danceCap" class="relative z-10 font-serif italic text-3xl sm:text-4xl text-center mb-2 px-6" aria-live="polite" aria-atomic="true" style="color:#FFE9C4;opacity:0;text-shadow:0 0 24px rgba(255,214,160,.45)"></p>
-    <svg id="danceScene" viewBox="0 150 600 340" class="relative z-10 block w-[min(100%,780px)]" style="overflow:visible" role="img" aria-label="The two of them waltz together under the moon">
+    <div class="relative z-10 flex flex-1 flex-col items-center justify-end">
+      <p id="danceCap" class="font-serif italic text-3xl sm:text-4xl text-center mb-2 px-6" aria-live="polite" aria-atomic="true" style="color:#FFE9C4;opacity:0;text-shadow:0 0 24px rgba(255,214,160,.45)"></p>
+      <svg id="danceScene" viewBox="0 150 600 340" class="block w-[min(100%,780px)]" style="overflow:visible" role="img" aria-label="The two of them waltz together under the moon">
       <defs>
         <linearGradient id="dHairG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3C2C52"/><stop offset="1" stop-color="#221832"/></linearGradient>
         <linearGradient id="dHairG2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#46345F"/><stop offset="1" stop-color="#2B1F3D"/></linearGradient>
+        <linearGradient id="dGroundG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1B2250"/><stop offset="1" stop-color="#0C0E2B"/></linearGradient>
         <radialGradient id="dWSkin" cx="42%" cy="40%" r="68%"><stop offset="0" stop-color="#F3D2BC"/><stop offset=".7" stop-color="#E8C0A6"/><stop offset="1" stop-color="#DBAA90"/></radialGradient>
         <radialGradient id="dMSkin" cx="55%" cy="40%" r="68%"><stop offset="0" stop-color="#EFC9AE"/><stop offset=".7" stop-color="#E5B99C"/><stop offset="1" stop-color="#D5A388"/></radialGradient>
       </defs>
-      <path d="M0 400 C120 362 240 402 360 382 C470 364 540 394 600 382 V490 H0Z" fill="#1A1448"/>
-      <rect x="0" y="428" width="600" height="70" fill="#241A56"/>
+      <path d="M0 420 C90 380 165 410 255 396 C330 386 390 420 480 410 L600 430 L600 442 L0 442Z" fill="#1B2250"/>
+      <rect x="0" y="438" width="600" height="52" fill="url(#dGroundG)"/>
       <ellipse id="dPool" cx="300" cy="442" rx="230" ry="15" fill="#F6E1B6" opacity=".14"/>
+      <g id="danceGroundFlowers" aria-hidden="true">
+        <path d="M48 442q16-14 32 0m-21 0q14-18 29 0m-15 0q16-12 30 0M494 442q16-14 32 0m-21 0q14-18 29 0m-15 0q16-12 30 0" fill="none" stroke="#79906F" stroke-opacity=".72" stroke-width="1.4" stroke-linecap="round"/>
+        <g fill="#FFF8EC" stroke="#E8D8C5" stroke-width=".35">
+          <g transform="translate(62 428) scale(.7)"><circle cy="-3" r="2.4"/><circle cx="2.8" cy="-1" r="2.4"/><circle cx="1.8" cy="2.6" r="2.4"/><circle cx="-1.8" cy="2.6" r="2.4"/><circle cx="-2.8" cy="-1" r="2.4"/><circle r="1" fill="#F2D9A8"/></g>
+          <g transform="translate(94 432) scale(.55)"><circle cy="-3" r="2.4"/><circle cx="2.8" cy="-1" r="2.4"/><circle cx="1.8" cy="2.6" r="2.4"/><circle cx="-1.8" cy="2.6" r="2.4"/><circle cx="-2.8" cy="-1" r="2.4"/><circle r="1" fill="#F2D9A8"/></g>
+          <g transform="translate(506 428) scale(.7)"><circle cy="-3" r="2.4"/><circle cx="2.8" cy="-1" r="2.4"/><circle cx="1.8" cy="2.6" r="2.4"/><circle cx="-1.8" cy="2.6" r="2.4"/><circle cx="-2.8" cy="-1" r="2.4"/><circle r="1" fill="#F2D9A8"/></g>
+          <g transform="translate(538 432) scale(.55)"><circle cy="-3" r="2.4"/><circle cx="2.8" cy="-1" r="2.4"/><circle cx="1.8" cy="2.6" r="2.4"/><circle cx="-1.8" cy="2.6" r="2.4"/><circle cx="-2.8" cy="-1" r="2.4"/><circle r="1" fill="#F2D9A8"/></g>
+        </g>
+        <path d="M154 445 C196 424 215 420 244 427 M446 445 C404 424 385 420 356 427" fill="none" stroke="#F6E1B6" stroke-opacity=".22" stroke-width="1.2" stroke-dasharray="1 9" stroke-linecap="round"/>
+      </g>
       <g id="couple">
         <ellipse cx="320" cy="442" rx="120" ry="8" fill="#000" opacity=".3"/>
         <g id="dHair">
@@ -1215,23 +1474,297 @@
         <path d="M274 304.4 C271 305.8 269.4 308 270 311" fill="none" stroke="#C99A80" stroke-width="2.4" stroke-linecap="round"/><path d="M274 304.4 C271 305.8 269.4 308 270 311" fill="none" stroke="#EBC8B0" stroke-width="1.6" stroke-linecap="round"/>
         <circle cx="262.2" cy="302.6" r=".9" fill="none" stroke="#F6D98B" stroke-width=".8"/>
       </g>
-    </svg>
-    <button id="nextDanceBtn" class="next-btn relative z-10 mb-6" type="button" aria-label="Continue to the final scene">
-      Next
-      <svg aria-hidden="true" viewBox="0 0 20 20" width="18" height="18" fill="none">
-        <path d="M10 3v13m-5-5 5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-    </button>
+    </div>
+    <div class="relative z-10 flex justify-center pt-2 pb-9" style="background:#0C0E2B">
+      <button id="nextDanceBtn" class="next-btn" type="button" aria-label="Continue to the final scene">
+        <span class="font-serif italic text-xl">Next</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+      </button>
+    </div>
   </section>
 
   <!-- ============ SCENE 7: A FINAL NOTE ============ -->
   <section id="part6" class="epilogue-sky relative min-h-screen overflow-hidden flex items-center justify-center px-6">
+    <svg class="scene-scenery" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs><linearGradient id="epilogueHills" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#17133F" stop-opacity="0"/><stop offset="1" stop-color="#100F35" stop-opacity=".7"/></linearGradient></defs>
+      <path d="M0 670Q220 574 430 648T860 626T1240 652T1440 604V900H0Z" fill="#21194F" opacity=".38"/>
+      <path d="M0 774Q180 712 380 770T760 748T1140 774T1440 728V900H0Z" fill="url(#epilogueHills)"/>
+      <g fill="none" stroke="#6B5578" stroke-width="3" stroke-linecap="round" opacity=".32">
+        <path d="M0 900Q42 832 24 756M20 836Q70 820 90 774M28 862Q-6 832-8 800"/>
+        <path d="M1440 900Q1398 832 1416 756M1420 836Q1370 820 1350 774M1412 862Q1446 832 1448 800"/>
+      </g>
+      <path d="M220 210q18-20 36 0t36 0t36 0" fill="none" stroke="#FFE9C4" stroke-opacity=".4" stroke-width="2"/>
+      <circle cx="256" cy="210" r="3" fill="#FFE9C4" opacity=".65"/>
+    </svg>
     <div class="epilogue-stars" aria-hidden="true"></div>
-    <p id="epilogueMessage" class="relative z-10 max-w-3xl text-center font-serif italic">
-      I hope you enjoyed my version of a serenade, Jai. <br><br>
-
-      -Love, <span class="font-bold">Victor</span>
-    </p>
+    <svg class="epilogue-window" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="windowMahogany" x1="0" y1="0" x2="1" y2="1">
+          <stop stop-color="#69473F"/><stop offset=".46" stop-color="#382A31"/><stop offset="1" stop-color="#211D2A"/>
+        </linearGradient>
+        <linearGradient id="windowWoodLight" x1="0" y1="0" x2="0" y2="1">
+          <stop stop-color="#9B7159"/><stop offset=".5" stop-color="#64483F"/><stop offset="1" stop-color="#392B34"/>
+        </linearGradient>
+        <linearGradient id="windowNightSky" x1="0" y1="0" x2="0" y2="1">
+          <stop stop-color="#171B3B"/><stop offset=".62" stop-color="#34345C"/><stop offset="1" stop-color="#72516B"/>
+        </linearGradient>
+        <linearGradient id="windowStreet" x1="0" y1="0" x2="0" y2="1">
+          <stop stop-color="#56435D"/><stop offset=".48" stop-color="#3C334E"/><stop offset="1" stop-color="#29283E"/>
+        </linearGradient>
+        <radialGradient id="windowLampGlow">
+          <stop stop-color="#FFE7A6" stop-opacity=".42"/><stop offset="1" stop-color="#FFD98C" stop-opacity="0"/>
+        </radialGradient>
+        <radialGradient id="windowLampPool">
+          <stop stop-color="#E9B878" stop-opacity=".22"/><stop offset="1" stop-color="#E9B878" stop-opacity="0"/>
+        </radialGradient>
+        <pattern id="windowBrick" width="72" height="38" patternUnits="userSpaceOnUse">
+          <rect width="72" height="38" fill="#55403C"/>
+          <path d="M0 1H72M0 37H72M36 1V19M0 19H72M18 19V37M58 19V37" fill="none" stroke="#241F2A" stroke-width="3" opacity=".8"/>
+          <path d="M2 3H70M2 21H70" fill="none" stroke="#9A7059" stroke-width="1" opacity=".34"/>
+        </pattern>
+        <clipPath id="windowLatticeClip"><rect x="96" y="-8" width="1248" height="130"/></clipPath>
+      </defs>
+      <g>
+        <path d="M0 0H1440V900H0Z" fill="url(#windowBrick)" opacity=".34"/>
+        <path d="M0 0H1440V42H0Z" fill="url(#windowMahogany)"/>
+        <path d="M0 42H1440V62H0Z" fill="url(#windowWoodLight)"/>
+        <path d="M0 8H1440M0 51H1440" stroke="#D1A07B" stroke-opacity=".28" stroke-width="3"/>
+        <path d="M0 64H1440V90H0Z" fill="#211D2A" opacity=".86"/>
+      </g>
+      <g>
+        <path d="M88 0H153V900H88Z" fill="url(#windowMahogany)"/>
+        <path d="M1287 0H1352V900H1287Z" fill="url(#windowMahogany)"/>
+        <path d="M101 0H116V900H101ZM1323 0H1338V900H1323Z" fill="#C08E6C" opacity=".38"/>
+        <path d="M0 0H80V900H0ZM1360 0H1440V900H1360Z" fill="url(#windowBrick)" opacity=".9"/>
+        <path d="M75 0H96V900H75ZM1344 0H1365V900H1344Z" fill="url(#windowWoodLight)"/>
+        <path d="M70 0V900M96 0V900M1344 0V900M1370 0V900" stroke="#D1A17D" stroke-opacity=".34" stroke-width="3"/>
+      </g>
+      <g transform="scale(1 .3)">
+        <path d="M118 0H1322V132H118Z" fill="#261F2B" stroke="url(#windowWoodLight)" stroke-width="18"/>
+        <g clip-path="url(#windowLatticeClip)" fill="none" stroke="#A77C62" stroke-width="8" opacity=".82">
+          <path d="M40 -30L190 120M130 -30L280 120M220 -30L370 120M310 -30L460 120M400 -30L550 120M490 -30L640 120M580 -30L730 120M670 -30L820 120M760 -30L910 120M850 -30L1000 120M940 -30L1090 120M1030 -30L1180 120M1120 -30L1270 120M1210 -30L1360 120M1300 -30L1450 120"/>
+          <path d="M40 120L190 -30M130 120L280 -30M220 120L370 -30M310 120L460 -30M400 120L550 -30M490 120L640 -30M580 120L730 -30M670 120L820 -30M760 120L910 -30M850 120L1000 -30M940 120L1090 -30M1030 120L1180 -30M1120 120L1270 -30M1210 120L1360 -30M1300 120L1450 -30"/>
+        </g>
+        <path d="M118 119H1322V145H118Z" fill="url(#windowWoodLight)"/>
+        <path d="M118 119H1322" stroke="#D7AC84" stroke-opacity=".55" stroke-width="4"/>
+        <path d="M130 143H1310V177H130Z" fill="url(#windowMahogany)"/>
+        <path d="M147 150H1293V168H147Z" fill="#201C2A" opacity=".7"/>
+      </g>
+      <g>
+        <path d="M153 54H1287V900H153Z" fill="url(#windowNightSky)"/>
+        <circle cx="1128" cy="79" r="20" fill="#F4D7A5" opacity=".86"/>
+        <circle cx="1121" cy="73" r="17" fill="#F7E5C5" opacity=".34"/>
+        <g fill="#F8E8C9" opacity=".85">
+          <circle cx="286" cy="78" r="2"/><circle cx="522" cy="93" r="1.7"/>
+          <circle cx="854" cy="72" r="2"/><circle cx="1018" cy="91" r="1.5"/>
+          <circle cx="402" cy="66" r="1.3"/><circle cx="766" cy="83" r="1.4"/>
+        </g>
+        <path d="M153 151Q275 117 385 142T607 137T843 147T1077 128T1287 143V213H153Z" fill="#24263F"/>
+        <path d="M153 176L199 176V151L219 151V163L244 163V138L270 121L297 138V163L318 163V149L344 149V176L369 176V145L386 145V128L406 128V156L431 156V169L456 169V139L486 119L516 139V169L540 169V148L564 148V177L596 177V159L621 159V139L643 139V168L670 168V149L696 149V128L717 128V151L743 151V174L775 174V148L801 148V132L827 132V160L858 160V176H1287V222H153Z" fill="#292943"/>
+        <path d="M153 190L185 190V169L201 169V190L229 190V160L247 160V144L263 144V166L280 166V187L309 187V165L328 165V151L346 151V177L369 177V191L397 191V164L416 164V149L434 149V174L457 174V191L486 191V165L505 165V151L524 151V179L550 179V195L578 195V168L596 168V155L616 155V180L642 180V195L674 195V164L692 164V147L710 147V174L738 174V196L767 196V167L786 167V151L806 151V178L830 178V197L858 197V165L880 165V151L899 151V180L925 180V198L957 198V168L979 168V150L998 150V179L1025 179V197L1054 197V170L1072 170V154L1093 154V181L1118 181V198L1150 198V166L1171 166V149L1190 149V177L1215 177V194L1246 194V161L1264 161V146L1287 146V224H153Z" fill="#34304C"/>
+        <g fill="#F4C982" opacity=".78">
+          <rect x="207" y="174" width="7" height="10" rx="1"/><rect x="254" y="151" width="7" height="9" rx="1"/>
+          <rect x="292" y="170" width="7" height="9" rx="1"/><rect x="396" y="155" width="7" height="9" rx="1"/>
+          <rect x="475" y="174" width="8" height="10" rx="1"/><rect x="493" y="174" width="8" height="10" rx="1"/>
+          <rect x="612" y="169" width="7" height="9" rx="1"/><rect x="700" y="156" width="7" height="9" rx="1"/>
+          <rect x="799" y="160" width="8" height="10" rx="1"/><rect x="887" y="171" width="7" height="9" rx="1"/>
+          <rect x="986" y="159" width="7" height="9" rx="1"/><rect x="1080" y="164" width="8" height="10" rx="1"/>
+          <rect x="1180" y="158" width="7" height="9" rx="1"/><rect x="1249" y="171" width="7" height="9" rx="1"/>
+        </g>
+        <g fill="none" stroke="#191D34" stroke-width="2.5" opacity=".78">
+          <path d="M153 137Q389 155 619 138T1041 145T1287 134"/>
+          <path d="M153 143Q372 160 604 145T1055 153T1287 141"/>
+        </g>
+        <g fill="#C18A64" opacity=".7">
+          <circle cx="337" cy="150" r="2"/><circle cx="682" cy="146" r="2"/>
+          <circle cx="1035" cy="151" r="2"/>
+        </g>
+        <path d="M153 208Q312 188 461 205T765 203T1050 194T1287 207V255H153Z" fill="#252940"/>
+        <g fill="#20273B">
+          <path d="M155 243Q184 212 211 242Q222 208 249 237Q272 209 296 244V278H155Z"/>
+          <path d="M1142 244Q1173 207 1202 239Q1226 205 1252 239Q1272 216 1287 239V281H1142Z"/>
+        </g>
+        <g fill="none" stroke="#4E5367" stroke-width="3" opacity=".55">
+          <path d="M198 242V277M181 251L198 261L215 246M1179 239V276M1161 252L1179 260L1197 245M1232 239V280M1214 250L1232 259L1251 244"/>
+        </g>
+        <path d="M153 244H1287V900H153Z" fill="url(#windowStreet)"/>
+        <path d="M153 249Q390 231 604 247T1002 241T1287 248" fill="none" stroke="#A68183" stroke-opacity=".35" stroke-width="3"/>
+        <path d="M153 282Q321 274 486 282M954 282Q1117 270 1287 279" fill="none" stroke="#E8B976" stroke-opacity=".2" stroke-width="2"/>
+        <path d="M530 244H910L1287 900H153Z" fill="#29283E" opacity=".58"/>
+        <path d="M718 245L688 900M724 245L754 900" fill="none" stroke="#D6B38F" stroke-opacity=".22" stroke-width="3"/>
+        <ellipse cx="257" cy="286" rx="115" ry="38" fill="url(#windowLampPool)"/>
+        <ellipse cx="1186" cy="286" rx="118" ry="40" fill="url(#windowLampPool)"/>
+        <path d="M153 315Q315 304 472 317M952 317Q1115 301 1287 313" fill="none" stroke="#C9A1A0" stroke-opacity=".12" stroke-width="3"/>
+        <path d="M153 365Q302 355 425 365M1002 368Q1141 352 1287 362" fill="none" stroke="#C9A1A0" stroke-opacity=".1" stroke-width="2"/>
+        <g>
+          <ellipse cx="257" cy="228" rx="83" ry="95" fill="url(#windowLampGlow)"/>
+          <path d="M257 229V467M257 231Q257 197 284 191" fill="none" stroke="#171B29" stroke-width="8" stroke-linecap="round"/>
+          <path d="M272 187H297L304 196H263Z" fill="#262536" stroke="#A77B5E" stroke-width="2"/>
+          <path d="M270 196H300L294 210H275Z" fill="#FFE0A0" opacity=".95"/>
+          <ellipse cx="1186" cy="229" rx="83" ry="95" fill="url(#windowLampGlow)"/>
+          <path d="M1186 230V466M1186 232Q1186 198 1213 192" fill="none" stroke="#171B29" stroke-width="8" stroke-linecap="round"/>
+          <path d="M1201 188H1226L1233 197H1192Z" fill="#262536" stroke="#A77B5E" stroke-width="2"/>
+          <path d="M1199 197H1229L1223 211H1204Z" fill="#FFE0A0" opacity=".95"/>
+        </g>
+        <g fill="#F4C982" opacity=".58">
+          <path d="M180 323H183V348H180ZM332 295H335V319H332ZM1095 300H1098V323H1095ZM1255 327H1258V352H1255Z"/>
+        </g>
+        <g fill="none" stroke="#1D2639" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M198 272Q196 231 181 208M197 237Q176 222 169 210M196 234Q211 216 222 212M194 226Q185 206 185 198M198 229Q203 205 214 197" stroke-width="5"/>
+          <path d="M1242 272Q1244 231 1259 208M1243 237Q1264 222 1271 210M1244 234Q1229 216 1218 212M1246 226Q1255 206 1255 198M1242 229Q1237 205 1226 197" stroke-width="5"/>
+        </g>
+        <path d="M152 469H1288" stroke="#D5B08E" stroke-opacity=".2" stroke-width="3"/>
+      </g>
+    </svg>
+    <div class="epilogue-table" aria-hidden="true"></div>
+    <article id="epilogueMessage" class="postcard relative z-10" aria-label="A postcard for Jai">
+      <div class="postcard-top">
+        <p class="postcard-kicker">To</p>
+        <h2 class="postcard-recipient">Jai</h2>
+        <div class="postcard-stamp" aria-hidden="true">
+          <svg viewBox="0 0 80 96">
+            <rect x="4" y="4" width="72" height="88" rx="3" fill="#F3D9B6"/>
+            <path d="M13 68Q22 53 34 61T56 60T68 65V83H13Z" fill="#937F9D"/>
+            <circle cx="40" cy="37" r="18" fill="#F9EBCB"/>
+            <path d="M18 57C25 49 32 48 40 56C48 46 58 48 64 58" fill="none" stroke="#71896D" stroke-width="2"/>
+            <path d="M18 15H62M18 21H52" stroke="#8C6C66" stroke-width="1.5" opacity=".7"/>
+          </svg>
+          <span>FROM THE<br>MOONLIT NIGHT</span>
+        </div>
+        <div class="postcard-postmark" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+      <div class="postcard-divider" aria-hidden="true"><span>✦</span></div>
+      <div class="postcard-keepsakes" aria-hidden="true">
+        <div class="postcard-moment">
+          <svg class="postcard-motif postcard-motif-butterfly" viewBox="0 0 48 48">
+            <g transform="translate(24 22)" stroke="#755B70" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M0 1V16M0 5C-5-4-15-6-19 0C-22 5-16 10-2 13M0 5C5-4 15-6 19 0C22 5 16 10 2 13" fill="#D9A6B6"/>
+              <path d="M0 4Q-7-2-14-1M0 6Q-8 3-17 4M0 4Q7-2 14-1M0 6Q8 3 17 4" fill="none" stroke="#F5DCE0" stroke-width=".8" opacity=".9"/>
+              <path d="M0 3Q-4-4-8-5M0 3Q4-4 8-5" fill="none" stroke-width="1"/>
+              <path d="M-18 1Q-13 0-10 3M18 1Q13 0 10 3" fill="none" stroke="#A9788D" stroke-width=".8"/>
+              <path d="M-2 9Q0 11 2 9" fill="none" stroke="#A9788D" stroke-width=".8"/>
+              <circle cy="16" r="2" fill="#F2C879" stroke="none"/>
+            </g>
+            <path d="M7 39Q24 35 41 39" fill="none" stroke="#D8C5A8" stroke-width=".7" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="postcard-moment">
+          <svg class="postcard-motif postcard-motif-petals" viewBox="0 0 48 48">
+            <g fill="#D98FA5" opacity=".85">
+              <path d="M8 8Q16 12 11 20Q5 17 8 8Z"/>
+              <path d="M30 5Q39 9 34 16Q27 13 30 5Z"/>
+              <path d="M20 24Q29 28 24 36Q17 33 20 24Z"/>
+              <path d="M37 27Q43 30 40 36Q35 33 37 27Z"/>
+            </g>
+            <g fill="none" stroke="#F8DDE1" stroke-width=".8" stroke-linecap="round" opacity=".9">
+              <path d="M8 10Q11 14 11 18M31 7Q34 10 34 14M21 26Q24 29 24 34M38 29Q40 31 40 34"/>
+            </g>
+            <g fill="#F2C879" opacity=".8"><circle cx="11" cy="19" r="1"/><circle cx="34" cy="15" r=".8"/><circle cx="24" cy="35" r="1"/></g>
+            <path d="M5 42Q21 39 42 42" fill="none" stroke="#D8C5A8" stroke-width=".7" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="postcard-moment">
+          <svg class="postcard-motif postcard-motif-guitar" viewBox="0 0 48 48">
+            <g transform="translate(17 24) rotate(-17)" stroke="#755B70" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M7 1L11-8L14-7L11 2M8 1C1-1-3 5 1 9C-3 13 1 19 8 16C14 14 15 5 8 1Z" fill="#C98BA2"/>
+              <circle cx="7" cy="8" r="2.1" fill="#F3D9B6"/>
+              <path d="M10-7L12 14" fill="none" stroke="#F3D9B6" stroke-width=".8"/>
+              <path d="M0 4L11 7M-1 7L11 10M0 10L11 13" fill="none" stroke="#F3D9B6" stroke-width=".55"/>
+              <path d="M2 3Q5 2 8 4M1 12Q5 15 9 13" fill="none" stroke="#F4D6DC" stroke-width=".8" opacity=".9"/>
+              <path d="M11-7L13-6M11-4L14-3M12-1L15 0" fill="none" stroke="#D6B578" stroke-width=".7"/>
+              <circle cx="7" cy="8" r=".8" fill="#755B70" stroke="none"/>
+            </g>
+            <path d="M8 40Q22 37 40 40" fill="none" stroke="#D8C5A8" stroke-width=".7" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="postcard-moment">
+          <svg class="postcard-motif postcard-motif-paper" viewBox="0 0 48 48">
+            <g transform="translate(24 24) rotate(7)" stroke="#866C69" stroke-width="1">
+              <path d="M-11-15H5L11-9V15H-11Z" fill="#FFF8EA"/>
+              <path d="M5-15V-9H11" fill="#E9D7BB" stroke-linejoin="round"/>
+              <path d="M5-15V-9H11M-7-4H5M-7 0H7M-7 4H4" fill="none" stroke-linecap="round"/>
+              <path d="M-7 8H6" fill="none" stroke="#D7A6AE" stroke-width=".8"/>
+              <path d="M-10 11Q-4 7 1 11T10 11" fill="none" stroke="#D7A6AE"/>
+              <path d="M-7-8H1M-7-6H3" fill="none" stroke="#B7A394" stroke-width=".55" opacity=".7"/>
+              <circle cx="7" cy="12" r="1" fill="#C98BA2" stroke="none"/>
+            </g>
+            <path d="M7 42Q24 39 41 42" fill="none" stroke="#D8C5A8" stroke-width=".7" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="postcard-moment">
+          <svg class="postcard-motif postcard-pressed-sampaguita" viewBox="0 0 80 100">
+            <path d="M18 88C30 71 35 55 42 39C47 27 53 19 63 12" fill="none" stroke="#71836A" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M29 70Q17 62 12 51Q26 51 34 62ZM37 53Q47 47 55 36Q41 37 34 47ZM45 35Q35 28 33 18Q44 21 49 30ZM24 78Q15 75 8 68Q20 66 27 72Z" fill="#A2AD86" fill-opacity=".72" stroke="#71836A" stroke-width="1"/>
+            <g fill="none" stroke="#71836A" stroke-width=".7" stroke-linecap="round" opacity=".8">
+              <path d="M31 65Q25 59 19 56M36 49Q43 44 50 39M45 31Q40 26 36 22M24 74Q18 71 13 69"/>
+            </g>
+            <g transform="translate(62 12)" fill="#FFFCF1" fill-opacity=".82" stroke="#D8C9AC" stroke-width=".8">
+              <ellipse cy="-6" rx="3.6" ry="6"/><ellipse cy="-6" rx="3.6" ry="6" transform="rotate(72)"/>
+              <ellipse cy="-6" rx="3.6" ry="6" transform="rotate(144)"/><ellipse cy="-6" rx="3.6" ry="6" transform="rotate(216)"/>
+              <ellipse cy="-6" rx="3.6" ry="6" transform="rotate(288)"/><circle r="2.2" fill="#E5C982" stroke="none"/>
+              <circle r="4.3" fill="none" stroke="#E8DABF" stroke-width=".6" stroke-dasharray="1 2"/>
+            </g>
+            <g transform="translate(43 39) scale(.72)" fill="#FFFCF1" fill-opacity=".78" stroke="#D8C9AC" stroke-width="1">
+              <ellipse cy="-6" rx="3.6" ry="6"/><ellipse cy="-6" rx="3.6" ry="6" transform="rotate(72)"/>
+              <ellipse cy="-6" rx="3.6" ry="6" transform="rotate(144)"/><ellipse cy="-6" rx="3.6" ry="6" transform="rotate(216)"/>
+              <ellipse cy="-6" rx="3.6" ry="6" transform="rotate(288)"/><circle r="2.2" fill="#E5C982" stroke="none"/>
+            </g>
+            <path d="M13 57L31 64M46 31L56 20" fill="none" stroke="#E4D9C6" stroke-width="1.6" opacity=".8"/>
+          </svg>
+        </div>
+        <div class="postcard-moment postcard-moment-finale">
+          <svg class="postcard-dance-illustration" viewBox="0 0 240 100">
+          <defs>
+            <linearGradient id="postcardDanceSky" x1="0" y1="0" x2="0" y2="1">
+              <stop stop-color="#34365F"/>
+              <stop offset="1" stop-color="#77708A"/>
+            </linearGradient>
+          </defs>
+          <rect x="1" y="1" width="238" height="98" rx="3" fill="url(#postcardDanceSky)"/>
+          <circle cx="120" cy="31" r="20" fill="#F7E7BE"/>
+          <g fill="#E9DAB9" opacity=".8"><circle cx="114" cy="26" r="3"/><circle cx="128" cy="37" r="4"/><circle cx="119" cy="41" r="2"/></g>
+          <circle cx="120" cy="31" r="25" fill="none" stroke="#E9DAB9" stroke-opacity=".22" stroke-width="1"/>
+          <g fill="#202344">
+            <path d="M0 68Q22 54 46 67T91 65V91H0ZM150 66Q175 53 198 65T240 62V91H150Z"/>
+            <path d="M0 78Q65 67 120 78T240 75V100H0Z" opacity=".7"/>
+          </g>
+          <path d="M25 67Q35 53 48 61M215 66Q205 52 192 60" fill="none" stroke="#71896D" stroke-width="2"/>
+          <g fill="#EBC3CF" opacity=".8"><circle cx="40" cy="57" r="2"/><circle cx="200" cy="56" r="2"/></g>
+          <g fill="#EBC3CF" opacity=".58"><circle cx="33" cy="51" r="1"/><circle cx="46" cy="54" r="1"/><circle cx="194" cy="50" r="1"/><circle cx="207" cy="53" r="1"/></g>
+          <path d="M18 73Q45 67 72 73M168 72Q195 66 222 72" fill="none" stroke="#D7C8B2" stroke-opacity=".38" stroke-width="1"/>
+          <ellipse cx="121" cy="84" rx="43" ry="5" fill="#F4DEB4" opacity=".22"/>
+          <path d="M117 84Q120 70 123 61M123 84Q121 69 120 62" fill="none" stroke="#F7E7BE" stroke-opacity=".32" stroke-width="1"/>
+          <g stroke-linecap="round" stroke-linejoin="round">
+            <path d="M108 70L112 84M126 70L130 84" stroke="#473D5D" stroke-width="5"/>
+            <path d="M104 84h11M123 84h11" stroke="#332B49" stroke-width="3"/>
+            <path d="M110 51Q116 43 122 51L125 63L116 69L106 64Z" fill="#72658F" stroke="#453D63" stroke-width="1"/>
+            <path d="M111 53L115 65M114 51L119 66" fill="none" stroke="#A99ABA" stroke-width=".8" opacity=".8"/>
+            <path d="M110 54L101 61L116 65M121 54L134 49" fill="none" stroke="#72658F" stroke-width="4"/>
+            <path d="M132 70L136 84M150 70L154 84" stroke="#674B67" stroke-width="5"/>
+            <path d="M130 84h12M149 84h12" stroke="#49364F" stroke-width="3"/>
+            <path d="M134 50Q141 43 148 50L151 64L140 69L130 63Z" fill="#EBC3CF" stroke="#C889A2" stroke-width="1"/>
+            <path d="M135 52L139 66M139 50L144 67" fill="none" stroke="#F8E3E6" stroke-width=".8" opacity=".9"/>
+            <path d="M134 53L121 60L112 57M147 53L138 60" fill="none" stroke="#EBC3CF" stroke-width="4"/>
+            <circle cx="116" cy="45" r="6" fill="#E5B99C" stroke="none"/>
+            <circle cx="143" cy="44" r="6" fill="#E8C0A6" stroke="none"/>
+            <path d="M110 43Q109 36 117 37Q123 38 122 45Z" fill="#30253F" stroke="none"/>
+            <path d="M137 43Q136 36 144 37Q150 38 149 45Z" fill="#30253F" stroke="none"/>
+          </g>
+          <g fill="#FFF2D3"><circle cx="67" cy="28" r="1.5"/><circle cx="177" cy="23" r="1.3"/><circle cx="191" cy="41" r="1.1"/></g>
+          </svg>
+        </div>
+      </div>
+      <p class="postcard-message">I hope you enjoyed my version of a serenade, Jai. No matter how far apart we may be, my love for you remains enduring.</p>
+      <div class="postcard-signoff">
+        <span>With all my love,</span>
+        <strong>Victor</strong>
+      </div>
+      <div class="postcard-corner postcard-corner-left" aria-hidden="true">❧</div>
+      <div class="postcard-corner postcard-corner-right" aria-hidden="true">❧</div>
+    </article>
   </section>
 
 </main>
