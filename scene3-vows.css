@@ -44,15 +44,18 @@
     outline: 1px solid rgba(138,75,88,.20); outline-offset: -11px;
     border-radius: 3px;
     box-shadow: 0 30px 55px -24px rgba(0,0,0,.7), 0 0 0 1px rgba(120,90,70,.08), inset 0 1px 0 rgba(255,255,255,.8);
+    transition: outline-color .6s ease;
   }
+  .held:hover .paper { outline-color: rgba(195,151,98,.48); }
   .paper::before {                                   /* a faint fold across the middle */
     content: ""; position: absolute; left: 0; right: 0; top: 52%; height: 14px; pointer-events: none;
     background: linear-gradient(180deg, rgba(120,90,70,0), rgba(120,90,70,.07) 50%, rgba(120,90,70,0));
   }
   .paper::after {                                    /* soft glow from the page into the mist */
     content: ""; position: absolute; inset: -1px; border-radius: 3px; pointer-events: none;
-    box-shadow: 0 0 40px 2px rgba(246,225,182,.12);
+    box-shadow: 0 0 32px 2px rgba(246,225,182,.2); opacity: 0; transition: opacity .6s ease;
   }
+  .held:hover .paper::after { opacity: 1; }
 
   .hand { position: absolute; bottom: -112px; width: 120px; height: 220px; pointer-events: none; }
   .hand svg { display: block; width: 100%; height: 100%; overflow: visible; }
