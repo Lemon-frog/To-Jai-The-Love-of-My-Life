@@ -8,12 +8,15 @@
 
   .cloud { position: absolute; left: -50%; border-radius: 50%; background: rgba(150,150,225,.13);
            filter: blur(16px); pointer-events: none; animation: cloudDrift linear infinite; }
+  #moon { animation: moonSway 9s ease-in-out infinite alternate; }
+  @keyframes moonSway { to { transform: translate3d(0,7px,0); } }
 
   .milkyway { position: absolute; left: -20%; top: 24%; width: 140%; height: 110px; transform: rotate(-24deg);
     background: linear-gradient(90deg, transparent, rgba(190,170,255,.10) 30%, rgba(255,200,230,.09) 60%, transparent);
     filter: blur(26px); pointer-events: none; }
   .shoot { position: absolute; width: 90px; height: 1.5px; pointer-events: none;
-           background: linear-gradient(90deg, #fff, rgba(255,255,255,0)); }
+           background: linear-gradient(90deg, #FFF9E8 0%, rgba(255,244,210,.62) 34%, rgba(255,255,255,0) 100%);
+           filter: drop-shadow(0 0 3px rgba(255,241,207,.7)); }
   .lyric {
     font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-weight: 500;
     font-size: clamp(1.35rem, 3.6vw, 2.1rem); line-height: 1.35;
