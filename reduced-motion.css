@@ -1,8 +1,13 @@
 /* ACCESSIBILITY: must stay LAST so it overrides the animations declared in the other files */
   @media (prefers-reduced-motion: reduce) {
-    * { transition-duration: .01ms !important; }
+    html { scroll-behavior: auto !important; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition-duration: .01ms !important;
+    }
     .star { animation: none; opacity: .7; }
-    .mist, .cloud, .cloud-w { animation: none; }
+    .mist, .cloud, .cloud-w, .sun-glow, #moon { animation: none; }
+    .constellation-art { animation: none; }
     .held-inner { animation: none; }
     .wing-l, .wing-r, .bird { animation: none; }
   }
