@@ -48,7 +48,7 @@
     gsap.to('#womanWisp', { rotation: 7, duration: BEAT * 1.8, ease: 'sine.inOut', yoyo: true, repeat: -1 });
     gsap.to('#manWisp',   { rotation: -6, duration: BEAT * 1.4, ease: 'sine.inOut', yoyo: true, repeat: -1 });
     gsap.to('#doorGlow',  { opacity: 0.7, duration: 3.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
-    gsap.to('#nextArrow', { y: 5, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+    gsap.to('.next-arrow', { y: 5, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
     // both of them blink, out of sync
     (function blinkW() { gsap.to('#womanEye', { scaleY: 0.1, duration: 0.09, yoyo: true, repeat: 1, delay: 2.4 + Math.random() * 3.6, onComplete: blinkW }); })();
     (function blinkM() { gsap.to('#manEye',   { scaleY: 0.1, duration: 0.09, yoyo: true, repeat: 1, delay: 3 + Math.random() * 3.6,   onComplete: blinkM }); })();
