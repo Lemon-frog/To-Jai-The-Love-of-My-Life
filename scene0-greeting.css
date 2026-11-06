@@ -9,7 +9,9 @@
     position: absolute; left: 50%; bottom: 8%; width: 90vmin; height: 90vmin; transform: translateX(-50%);
     border-radius: 50%; pointer-events: none;
     background: radial-gradient(closest-side, rgba(255,238,205,.8), rgba(255,238,205,0));
+    animation: sunsetBreath 8s ease-in-out infinite alternate;
   }
+  @keyframes sunsetBreath { to { opacity: .68; transform: translateX(-50%) scale(1.06); } }
   .cloud-w { position: absolute; left: -50%; border-radius: 50%; background: rgba(255,255,255,.38);
              filter: blur(14px); pointer-events: none; animation: cloudDrift linear infinite; }
 
@@ -18,7 +20,7 @@
     padding: 1.4rem 1.6rem 1.1rem;
     background: #FFFDF9; color: #4A2F3A;
     border: 1px solid rgba(138,75,88,.18); border-radius: 26px;
-    box-shadow: 0 22px 50px -24px rgba(74,47,58,.45);
+    box-shadow: 0 22px 50px -24px rgba(74,47,58,.45), inset 0 1px 0 rgba(255,255,255,.9);
   }
   .speech::after {
     content: ""; position: absolute; left: 50%; bottom: -11px; width: 22px; height: 22px;
