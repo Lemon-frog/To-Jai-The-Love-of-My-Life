@@ -74,10 +74,11 @@
       capNum.textContent = 'Chapter ' + num;
       capTitle.textContent = title;
       cap.style.color = color;
+      cap.classList.toggle('chapter-on-light', color === '#8A4B58');
       capTl = gsap.timeline({ delay: id === 'part0' ? 2.4 : 0.9 })
         .fromTo(cap, { opacity: 0, y: -8 }, { opacity: 0.9, y: 0, duration: 1.2, ease: 'power2.out' })
         .to(cap, { opacity: 0, y: -4, duration: 1.4, ease: 'power1.in' }, '+=2.4');
       if (reduceMotion) capTl.timeScale(6);
-    }, { threshold: 0.55 }).observe(el);
+    }, { threshold: 0.15 }).observe(el);
   });
 })();
