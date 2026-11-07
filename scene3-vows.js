@@ -1,6 +1,9 @@
 /* SCENE 3: poem cards entrance, lanterns, stars */
 (function () {
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduceMotion) {
+    gsap.to('#nextBtn3 .next-arrow', { y: 5, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  }
 
   /* Quiet stars (fewer and dimmer than Part 2, so they never compete with the text) */
   const st = document.getElementById('stars3');
