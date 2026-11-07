@@ -188,17 +188,32 @@
     .to('#dew', { opacity: 1, duration: 1.4 }, '-=0.8')
     .add(startIdle)
     .add(startSparkles)
-    .add(startPollen);
+    .add(startPollen)
+    .to('#flowerHint', { autoAlpha: 0, duration: 0.5 }, '+=0.8');
 
   if (reduceMotion) bloom.timeScale(6);
 
+  let bloomStarted = false, bloomObserver;
+  function startBloom(fromTap = false) {
+    if (bloomStarted) {
+      if (fromTap && bloom.progress() < 1) bloom.timeScale(reduceMotion ? 6 : 2).play();
+      return;
+    }
+    bloomStarted = true;
+    if (bloomObserver) bloomObserver.disconnect();
+    if (fromTap) bloom.timeScale(reduceMotion ? 6 : 2);
+    bloom.play();
+  }
+
+  document.getElementById('flowerTap').addEventListener('click', () => startBloom(true));
+
   // The flower now comes second in the story, so it blooms when you arrive at it.
-  let bloomStarted = false;
-  new IntersectionObserver((entries, obs) => {
+  bloomObserver = new IntersectionObserver((entries, obs) => {
     if (!entries[0].isIntersecting || bloomStarted) return;
     bloomStarted = true; obs.disconnect();
     gsap.delayedCall(0.4, () => bloom.play());
-  }, { threshold: 0.45 }).observe(document.getElementById('part1'));
+  }, { threshold: 0.45 });
+  bloomObserver.observe(document.getElementById('part1'));
 
   // A slow breath once the flower is open
   function startIdle() {
@@ -221,21 +236,34 @@
     if (e && e.type === 'pointerdown') e.preventDefault();
 
     const rect = noBtn.getBoundingClientRect();
+    const yesRect = yesBtn.getBoundingClientRect();
     const pad = 16;
     const curX = gsap.getProperty(noBtn, 'x');
     const curY = gsap.getProperty(noBtn, 'y');
 
-    // Pick a new spot, at least ~140px away from the current one, kept on screen.
-    let dx, dy, tries = 0;
-    do {
+    // Keep the dodge on screen and away from the Yes button.
+    let dx = curX, dy = curY, tries = 0, destinationFound = false;
+    while (tries < 24) {
       const minX = pad - rect.left + curX;
       const maxX = window.innerWidth  - pad - rect.right + curX;
       const minY = pad - rect.top + curY;
       const maxY = window.innerHeight - pad - rect.bottom + curY;
       dx = gsap.utils.random(minX, maxX);
       dy = gsap.utils.random(minY, maxY);
+      const nextLeft = rect.left + dx - curX;
+      const nextTop = rect.top + dy - curY;
+      const overlapsYes = nextLeft < yesRect.right + pad && nextLeft + rect.width > yesRect.left - pad &&
+        nextTop < yesRect.bottom + pad && nextTop + rect.height > yesRect.top - pad;
       tries++;
-    } while (Math.hypot(dx - curX, dy - curY) < 140 && tries < 12);
+      if (!overlapsYes && Math.hypot(dx - curX, dy - curY) >= 140) {
+        destinationFound = true;
+        break;
+      }
+    }
+    if (!destinationFound) {
+      dodging = false;
+      return;
+    }
 
     gsap.to(noBtn, {
       x: dx, y: dy,
@@ -246,7 +274,7 @@
 
     // The more it runs away, the more inviting "Yes" becomes.
     dodges++;
-    gsap.to(yesBtn, { scale: Math.min(1 + dodges * 0.06, 1.35), duration: 0.5, ease: 'back.out(2)' });
+    gsap.to(yesBtn, { scale: Math.min(1 + dodges * 0.06, 1.35), duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
   }
 
   noBtn.addEventListener('pointerenter', dodge);
@@ -289,9 +317,11 @@
           .to(p, { opacity: 0, duration: 0.8 }, 1.6);
       }
     }
+    const currentScale = Number(gsap.getProperty(yesBtn, 'scale')) || 1;
+    gsap.killTweensOf(yesBtn, 'scale');
     gsap.timeline()
-      .to(yesBtn, { scale: 1.12, duration: 0.18, ease: 'power2.out' })
-      .to(yesBtn, { scale: 1, duration: 0.3, ease: 'back.out(3)' })
+      .to(yesBtn, { scale: currentScale * 1.04, duration: 0.16, ease: 'power2.out' })
+      .to(yesBtn, { scale: currentScale, duration: 0.24, ease: 'power2.out' })
       .call(() => window.goTo('#part2', '#0C0E2B'), null, '+=0.35');
   });
 })();
