@@ -12,6 +12,21 @@
   .chapter .num { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; text-transform: none;
     letter-spacing: .08em; font-size: 1.35rem; margin-bottom: .15rem; }
   .chapter .rule { display: block; width: 36px; height: 1px; margin: .55rem auto 0; background: currentColor; opacity: .45; }
+  @media (max-width: 600px) {
+    .chapter {
+      top: max(.5rem, env(safe-area-inset-top));
+      left: .75rem; right: .75rem; max-width: 24rem; margin-inline: auto;
+      padding: .5rem .8rem .6rem; border-radius: 0 0 .9rem .9rem;
+      font-size: .62rem; line-height: 1.2; letter-spacing: .16em;
+      background: rgba(12,14,43,.82); box-shadow: 0 8px 20px rgba(0,0,0,.16);
+      backdrop-filter: blur(8px);
+    }
+    .chapter.chapter-on-light {
+      background: rgba(251,245,238,.96); box-shadow: 0 8px 20px rgba(74,47,58,.12);
+    }
+    .chapter .num { font-size: 1.15rem; margin-bottom: .1rem; }
+    .chapter .rule { margin-top: .35rem; }
+  }
   .seam { position: absolute; left: 0; right: 0; pointer-events: none; z-index: 1; }
   .seam-down-cream { bottom: 0; height: 16vh; background: linear-gradient(180deg, rgba(251,245,238,0), #FBF5EE); }
   .seam-down-night { bottom: 0; height: 18vh; background: linear-gradient(180deg, rgba(6,9,36,0), #060924); }
