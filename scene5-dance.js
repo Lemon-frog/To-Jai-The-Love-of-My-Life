@@ -5,6 +5,9 @@
   const noBtn = document.getElementById('danceNo'), yesBtn = document.getElementById('danceYes');
   const audio = document.getElementById('bgm');
   const danceCap = document.getElementById('danceCap');
+  if (!reduceMotion) {
+    gsap.to('#nextDanceBtn .next-arrow', { y: 5, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: -1 });
+  }
   let shownLyric = danceCap.textContent;
   const lyrics = [
     [6, 'I Love You Too Much'],
@@ -77,7 +80,7 @@
     const r = noBtn.getBoundingClientRect(), cx = gsap.getProperty(noBtn, 'x'), cy = gsap.getProperty(noBtn, 'y');
     gsap.to(noBtn, { x: rnd(16 - r.left + cx, innerWidth - 16 - r.right + cx), y: rnd(16 - r.top + cy, innerHeight - 16 - r.bottom + cy),
       rotation: rnd(-12, 12), duration: 0.55, ease: 'back.out(1.7)', onComplete: () => { dodging = false; } });
-    dodges++; gsap.to(yesBtn, { scale: Math.min(1 + dodges * 0.06, 1.35), duration: 0.5, ease: 'back.out(2)' });
+    dodges++; gsap.to(yesBtn, { scale: Math.min(1 + dodges * 0.06, 1.35), duration: 0.35, ease: 'power2.out', overwrite: 'auto' });
   }
   noBtn.addEventListener('pointerenter', dodge);
   noBtn.addEventListener('pointerdown', (e) => { e.preventDefault(); dodge(); });
@@ -126,34 +129,38 @@
     const reveal = gsap.to('#epilogueMessage', { opacity: 1, y: 0, duration: 1.8, ease: 'power2.out' });
     if (reduceMotion) reveal.timeScale(6);
   }, { threshold: 0.3 }).observe(document.getElementById('part6'));
-  let played = false;
-  new IntersectionObserver((e, io) => {
-    if (!e[0].isIntersecting || played) return; played = true; io.disconnect();
+  let played = false, danceVisible = false;
+  const danceParts = Object.fromEntries(['couple', 'dLegL', 'dLegR', 'dWFootL', 'dWFootR', 'dSkirtMain', 'dSkirtBack', 'dHair', 'dArmsUp', 'dManHead', 'dWomanHead', 'dScarfTail', 'dManBlush', 'dWomanBlush']
+    .map((id) => [id, document.getElementById(id)]));
+  new IntersectionObserver((e) => {
+    danceVisible = e[0].isIntersecting;
+    if (!danceVisible || played) return;
+    played = true;
     const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
     syncLyrics();
     tl.to('#danceScene', { opacity: 1, y: 0, duration: 1.8 }).to('#danceCap', { opacity: 1, duration: 2 }, '-=0.6');
     if (reduceMotion) { tl.timeScale(6); return; }
     const B = BEAT, I = 'sine.inOut';
     // one continuous waltz: every motion is a sine of the same 3-beat phase, so nothing ever snaps at a loop point
-    const TAU = Math.PI * 2, S = Math.sin, C = Math.cos, t0 = gsap.ticker.time, sec = document.getElementById('part5');
+    const TAU = Math.PI * 2, S = Math.sin, C = Math.cos, t0 = gsap.ticker.time;
     gsap.ticker.add(() => {
-      const r = sec.getBoundingClientRect(); if (r.bottom < 0 || r.top > innerHeight) return;
-      const now = gsap.ticker.time, th = TAU * now / (B * 3), ph = TAU * now / (B * 6);
-      const k0 = Math.min(1, (now - t0) / 2.5), k = k0 * k0 * (3 - 2 * k0);   // eases the dance in
-      gsap.set('#couple', { x: k * 34 * S(ph), y: -k * 4.5 * (1 - C(th - .5)), rotation: k * 1.8 * S(th + .6) });
-      gsap.set('#dLegL', { rotation: k * 9 * S(th) });
-      gsap.set('#dLegR', { rotation: k * 9 * S(th + 2.1) });
-      gsap.set('#dWFootL', { x: -k * 9 * S(th + .4) });
-      gsap.set('#dWFootR', { x: k * 9 * S(th + 2.5) });
-      gsap.set('#dSkirtMain', { scaleX: 1 + k * .07 * S(th), skewX: k * 3.2 * S(th + .7) });
-      gsap.set('#dSkirtBack', { scaleX: 1 - k * .06 * S(th + .3), skewX: -k * 3.6 * S(th + .8) });
-      gsap.set('#dHair', { rotation: k * (3 + 5 * S(th - .9)) });
-      gsap.set('#dArmsUp', { rotation: k * 2.2 * S(th + 1.2) });
-      gsap.set('#dManHead', { rotation: k * (1 + 2.2 * S(th + .2)) });
-      gsap.set('#dWomanHead', { rotation: -k * (1 + 2.2 * S(th + .4)) });
-      gsap.set('#dScarfTail', { rotation: k * (2 + 6 * S(th - .7)) });
-      gsap.set('#dManBlush', { opacity: .3 + .1 * S(th) });
-      gsap.set('#dWomanBlush', { opacity: .3 + .1 * S(th + 1) });
+      if (!danceVisible) return;
+      const elapsed = gsap.ticker.time - t0, th = TAU * elapsed / (B * 3), ph = TAU * elapsed / (B * 6);
+      const k0 = Math.min(1, elapsed / 1.2), k = k0 * k0 * (3 - 2 * k0);
+      gsap.set(danceParts.couple, { x: k * 34 * S(ph), y: -k * 4.5 * (1 - C(th - .5)), rotation: k * 1.8 * S(th + .6) });
+      gsap.set(danceParts.dLegL, { rotation: k * 9 * S(th) });
+      gsap.set(danceParts.dLegR, { rotation: k * 9 * S(th + 2.1) });
+      gsap.set(danceParts.dWFootL, { x: -k * 9 * S(th + .4) });
+      gsap.set(danceParts.dWFootR, { x: k * 9 * S(th + 2.5) });
+      gsap.set(danceParts.dSkirtMain, { scaleX: 1 + k * .07 * S(th), skewX: k * 3.2 * S(th + .7) });
+      gsap.set(danceParts.dSkirtBack, { scaleX: 1 - k * .06 * S(th + .3), skewX: -k * 3.6 * S(th + .8) });
+      gsap.set(danceParts.dHair, { rotation: k * (3 + 5 * S(th - .9)) });
+      gsap.set(danceParts.dArmsUp, { rotation: k * 2.2 * S(th + 1.2) });
+      gsap.set(danceParts.dManHead, { rotation: k * (1 + 2.2 * S(th + .2)) });
+      gsap.set(danceParts.dWomanHead, { rotation: -k * (1 + 2.2 * S(th + .4)) });
+      gsap.set(danceParts.dScarfTail, { rotation: k * (2 + 6 * S(th - .7)) });
+      gsap.set(danceParts.dManBlush, { opacity: .3 + .1 * S(th) });
+      gsap.set(danceParts.dWomanBlush, { opacity: .3 + .1 * S(th + 1) });
     });
     (function blink() { gsap.to(['#dManEye', '#dWomanEye'], { scaleY: .08, duration: .09, yoyo: true, repeat: 1, delay: rnd(2.4, 5), onComplete: blink }); })();
     gsap.to('#dPool', { opacity: 0.26, duration: 3, ease: I, yoyo: true, repeat: -1 });
